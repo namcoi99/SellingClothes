@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../Css/home.css';
-import logo from '../Images/logo.png';
 
 class Footer extends Component {
     render() {
@@ -11,14 +10,14 @@ class Footer extends Component {
                     <div className="top-footer-left">
                         <div className="top-footer-left-description">
                             <h3>
-                                Được thành lập từ năm 2019 với 3 nhà sáng lập. Fooddev tự hào là 1 trong 10 website bán hàng  online hàng đầu Việt Nam.
+                                Được thành lập từ năm 2020. StreetWear tự hào là 1 trong 10 website bán hàng online hàng đầu Việt Nam.
                             </h3>
                         </div>
                         <div className="top-footer-left-icon">
                             <a href="https://www.facebook.com/tatuan19" target="__blank"><i className="fab fa-facebook"></i></a>
-                            <a href="https://www.youtube.com/channel/UCiF_9u_6OLFuQ5UZe8il94w?view_as=subscriber" target="__blank"><i className="fab fa-youtube"></i></a>
-                            <a href="https://www.instagram.com/locckhl/?hl=vi" target="__blank"><i className="fab fa-instagram"></i></a>
-                            <a href="mailto:locckhl123@gmail.com" target="__blank"><i className="fas fa-envelope-square"></i></a>
+                            <a href="" target="__blank"><i className="fab fa-youtube"></i></a>
+                            <a href="" target="__blank"><i className="fab fa-instagram"></i></a>
+                            <a href="" target="__blank"><i className="fas fa-envelope-square"></i></a>
                         </div>
                     </div>
                     <div className="top-footer-right">
@@ -47,7 +46,7 @@ class Footer extends Component {
                                     <i className="fas fa-envelope-open-text"></i>
                                     <div>
                                         <h3>Email</h3>  
-                                        <p>Vladimir@lol.com</p>
+                                        <p>example@gmail.com</p>
                                     </div>
                                     
                                 </div>
