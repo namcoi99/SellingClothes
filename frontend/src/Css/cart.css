@@ -118,7 +118,7 @@ margin-top: 3px;
 
 .cart-price{
     width: 10%;
-    color: coral;
+    color: #343a40;
     margin-left: 10px;
     align-self: center;
     text-align: center;
@@ -170,7 +170,7 @@ margin-top: 3px;
     color: #868585;
     /* text-align: center; */
     border-bottom: 1px solid #f1f1f1;
-    background-color: #EB7719;
+    background-color: #343a40;
     color: white;
 }
 
@@ -262,7 +262,7 @@ margin-top: 3px;
 }
 
 .summary-total-right div:nth-child(1){
-    color: coral;
+    color: #343a40;
     font-weight: 700;
 }
 
@@ -342,7 +342,7 @@ input[type=number] {
 .list-header{
     display: flex;
     width: 100%;
-    background-color: #eb7719;
+    background-color: #343a40;
     color: white;
 }
 .list-header div{
@@ -403,7 +403,7 @@ input[type=number] {
 
 .cart-price{
     width: 15%;
-    color: coral;
+    color: #343a40;
     /* margin-left: 10px; */
     vertical-align: middle;
 }

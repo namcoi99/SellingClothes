@@ -39,7 +39,7 @@ class Product extends Component {
             <div>
                 <NavBar products={this.props.state.products} handleSearch={this.props.handleSearch} Total={this.props.state.Total} count={this.props.state.count} />
                 <div className="product">
-                    <div className="product-top">
+                    {/* <div className="product-top">
                         <a href="/">Trang chủ</a>
                         <i className="fas fa-chevron-right"></i>
                         <a href="/menu">Menu</a>
@@ -47,7 +47,7 @@ class Product extends Component {
                         <a href={`/menu${this.state.product.Category}`}>{this.state.product.Category}</a>
                         <i className="fas fa-chevron-right"></i>
                         <a href={`/product/${this.state.product.ProductID}`}>{this.state.product.Name}</a>
-                    </div>
+                    </div> */}
                     <div className="product-bottom">
                         <div className="product-bottom-left">
                             <div className="product-bottom-left-img">

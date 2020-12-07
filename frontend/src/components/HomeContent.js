@@ -138,14 +138,17 @@ class HomeContent extends Component {
         return (
             //  content
             <div id="home" >
-                <div className="home-top">
+                {/* <div className="home-top">
                     <a href="/">Trang chủ</a>
-                </div>
+                </div> */}
                 {/* Carousel */}
                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(35).jpg" className="d-block w-100" alt="..." />
+                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(35).jpg" className="d-block w-100" alt="..." 
+                            style={{
+                                height: "30%"
+                            }}/>
                         </div>
                         <div className="carousel-item">
                             <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).jpg" className="d-block w-100" alt="..." />

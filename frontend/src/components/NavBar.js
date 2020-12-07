@@ -86,7 +86,7 @@ class NavBar extends Component {
         const prefix = this.state.products ? this.state.products.map(item => (
             <a className='search-1' key={item.ProductID} href={`/product/${item.ProductID}`}>
                 <div className='result-item' key={item.ProductID}>
-                    <h3>{item.Name.toString().toLowerCase()}</h3>
+                    {item.Name.toString().toLowerCase()}
                 </div>
             </a>
         )) : ''
@@ -111,79 +111,71 @@ class NavBar extends Component {
         let LogOut
         if (username == null)
             SignIn = (
-                <a href="/signin">
-                    <div className="sign-in">
-                        <div className="sign-in-icon">
-                            <i className="fas fa-sign-in-alt"></i>
-                        </div>
-                        <div className="sign-in-text">Đăng nhập</div>
-                    </div>
-                </a>
+                <a className="nav-link" href="/signin">Đăng nhập</a>
             )
         else
             SignIn = (
-                <div className="sign-in">
-                    <div className="sign-up-icon">
-                        <i className="far fa-user"></i>
-                    </div>
-                    <div className="sign-in-text">Chào mừng, {username}</div>
-                </div>
+                <div className="nav-link text-white">Chào mừng, {username} </div>
             )
         if (username == null)
             SignUp = (
-                <a href="/signup">
-                    <div className="sign-up">
-                        <div className="sign-up-icon">
-                            <i className="far fa-user"></i>
-                        </div>
-                        <div className="sign-up-text">Đăng ký</div>
-                    </div>
-                </a>
+                <a className="nav-link" href="/signup">Đăng ký</a>
             )
         if (username != null)
             LogOut = (
-                <a href='/' onClick={this.SignOut}>
-                    <div className="sign-up">
-                        <div className="sign-in-icon">
-                            <i className="fas fa-sign-in-alt"></i>
-                        </div>
-                        <div className="sign-up-text">Đăng xuất</div>
-                    </div>
-                </a>
+                <a className="nav-link" href='/' onClick={this.SignOut}>Đăng xuất</a>
             )
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#"></a>
+                <a className="navbar-brand" href="/"><i class="fas fa-frog" style={{ fontSize: "2rem" }}></i> <b style={{ fontSize: "1.5rem" }}>STREETWEAR</b></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                            <a className="nav-link" href="/">Trang chủ <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-              </a>
+                                Sản phẩm
+                            </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
-                                <div className="dropdown-divider" />
-                                <a className="dropdown-item" href="#">Something else here</a>
+                                <a className="dropdown-item" href='/menuPizza'>Áo</a>
+                                <a className="dropdown-item" href='/menuBurger'>Quần</a>
+                                <a className="dropdown-item" href='/menuMilktea'>Phụ kiện</a>
                             </div>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled" href="#" tabIndex={-1} aria-disabled="true">Disabled</a>
+                            <a className="nav-link" href="#" onClick={this.viewCart}>Giỏ hàng</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#" onClick={this.viewOrder}>Đơn hàng</a>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form className="form-inline my-2 my-lg-0" style={{position: "relative"}}>
+                        <input className="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm..."
+                         name="productSearch" id="productSearch" onChange={this.handleChange} />
+                        <div className='search-container-1'>{prefix}</div>
+                        <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick={(e) => this.handleSubmit(e)}>Tìm kiếm</button>
+                        
                     </form>
+                    <ul className="navbar-nav ml-2">
+                        <li className="nav-item">
+                            {SignUp}
+                        </li>
+                        <li className="nav-item">
+                            {SignIn}
+                        </li>
+                        <li className="nav-item">
+                            {LogOut}
+                        </li>
+                    </ul>
+                    <div>
+
+
+
+                    </div>
                 </div>
             </nav>
             // <div className='header-container'>

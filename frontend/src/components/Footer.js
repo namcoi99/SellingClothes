@@ -9,9 +9,6 @@ class Footer extends Component {
             <div className="footer">
                 <div className="top-footer">
                     <div className="top-footer-left">
-                        <div className="top-footer-left-logo">
-                            <img src={logo} alt="logo"/>
-                        </div>
                         <div className="top-footer-left-description">
                             <h3>
                                 Được thành lập từ năm 2019 với 3 nhà sáng lập. Fooddev tự hào là 1 trong 10 website bán hàng  online hàng đầu Việt Nam.

@@ -157,21 +157,13 @@ class Menu extends Component {
                 {/* FIXME: */}
                 <NavBar products={this.props.state.products} Total={this.props.state.Total} count={this.props.state.count} />
                 <div id="content">
-                    <div className="content-top">
+                    {/* <div className="content-top">
                         <a href="/">Trang chủ</a>
                         <i className="fas fa-chevron-right" />
                         <a href="/menu">Menu</a>
-                    </div>
+                    </div> */}
                     {/* main-menu */}
                     <div className="main-menu">
-                        <div className="main-menu-header">
-                            <div className="main-menu-top">Sản phẩm chất lượng nhất♪♫♪♫</div>
-                            <div className="main-menu-center">{this.state.currentCategory}</div>
-                            <div className="main-menu-bottom">
-                                Đến từ những thương hiệu hàng đầu 
-                        </div>
-                        </div>
-
                         {/* sort menu */}
                         <div className="sort-menu">
                             <div className="sort-menu-left">

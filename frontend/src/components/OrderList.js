@@ -50,11 +50,11 @@ class Order extends Component {
             <div>
                 <Navbar products={this.props.state.products} handleSearch={this.props.handleSearch} Total={this.props.state.Total} count={this.props.state.count} />
                 <div className="orderlist">
-                    <div className="orderlist-top">
+                    {/* <div className="orderlist-top">
                         <a href="/home">Trang chủ</a>
                         <i className="fas fa-chevron-right"></i>
                         <a href="/order-list">Đơn hàng</a>
-                    </div>
+                    </div> */}
                     <div className="orderlist-bottom">
                         <div className="order-list-header">
                             Đơn hàng đã đặt

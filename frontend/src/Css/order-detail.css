@@ -90,7 +90,7 @@ margin-top: 3px;
 }
 
 .order-item-header{
-    background-color: #EB7719;
+    background-color: #343a40;
     color: white;
     display: flex;
     font-size: 20px;
@@ -141,7 +141,7 @@ margin-top: 3px;
 .order-price{
     width: 13%;
     padding: 25px 0 0 20px;
-    color: coral;
+    color: #343a40;
     margin-left: 10px;
     align-self: center;
 }
@@ -198,7 +198,7 @@ margin-top: 3px;
     color: #868585;
     /* text-align: center; */
     border-bottom: 1px solid #f1f1f1;
-    background-color: #EB7719;
+    background-color: #343a40;
     color: white;
 }
 
@@ -220,7 +220,7 @@ margin-top: 3px;
 .summary-header{
     font-size: 25px;
     /* padding: 10px; */
-    background-color: #EB7719;
+    background-color: #343a40;
     color: white;
 }
 .summary-content-2{
@@ -290,7 +290,7 @@ margin-top: 3px;
 }
 
 .summary-total-right div:nth-child(1){
-    color: coral;
+    color: #343a40;
     font-weight: 700;
 }
 
