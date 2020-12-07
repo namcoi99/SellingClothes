@@ -9,10 +9,9 @@ import Menu from './components/Menu';
 import Cart from './components/Cart';
 import OrderList from './components/OrderList';
 import OrderDetail from './components/OrderDetail';
-
-import Footer from '../src/components/Footer';
 import './App.scss';
 import OrderListSearch from './components/OrderListSearch.js';
+import AdminDashboard from './containers/AdminDashboard.js';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -143,6 +142,9 @@ Increase = (item,event) => {
               <Route exact path="/" render={(props) => {
                 return <Home {...props} addtoCart={this._addtoCart} state={this.state} />
               }} />
+              <Route exact path="/admin" render={(props) => {
+                return <AdminDashboard />
+              }} />
               <Route exact path="/signin" render={(props) => {
                 return <SignIn {...props} state={this.state} _onLogin={this._onLogin} />
               }} />
@@ -176,7 +178,6 @@ Increase = (item,event) => {
             </Switch>
           </React.Suspense>
         </BrowserRouter>
-        <Footer/>
       </div>
 
     );
