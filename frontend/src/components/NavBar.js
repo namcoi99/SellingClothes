@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import '../Css/header.css';
-import logo from '../Images/logo.png'
-import pizza from '../pizaa-1.jpg';
-import burger from '../hamburger-nav.png';
-import milktea from '../milktea-nav.jpg';
 import axios from '../axios';
 
 class NavBar extends Component {
@@ -126,7 +122,7 @@ class NavBar extends Component {
                 <a className="nav-link" href='/' onClick={this.SignOut}>Đăng xuất</a>
             )
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <a className="navbar-brand" href="/"><i class="fas fa-frog" style={{ fontSize: "2rem" }}></i> <b style={{ fontSize: "1.5rem" }}>STREETWEAR</b></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
@@ -153,12 +149,12 @@ class NavBar extends Component {
                             <a className="nav-link" href="#" onClick={this.viewOrder}>Đơn hàng</a>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0" style={{position: "relative"}}>
+                    <form className="form-inline my-2 my-lg-0" style={{ position: "relative" }}>
                         <input className="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm..."
-                         name="productSearch" id="productSearch" onChange={this.handleChange} />
+                            name="productSearch" id="productSearch" onChange={this.handleChange} />
                         <div className='search-container-1'>{prefix}</div>
                         <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick={(e) => this.handleSubmit(e)}>Tìm kiếm</button>
-                        
+
                     </form>
                     <ul className="navbar-nav ml-2">
                         <li className="nav-item">
@@ -171,122 +167,8 @@ class NavBar extends Component {
                             {LogOut}
                         </li>
                     </ul>
-                    <div>
-
-
-
-                    </div>
                 </div>
             </nav>
-            // <div className='header-container'>
-            //     <div className="header">
-            //         <div className="top-header">
-            //             <div className="support">
-            //                 <i className="fas fa-headset"></i>
-            //                 <span className="title-support">Điện thoại hỗ trợ</span>
-            //                 <span className="phone-support">19001009</span>
-            //                 <span className="support">|</span>
-            //                 <span>
-            //                     Follow us
-            //                     <a href="https://www.facebook.com/tatuan19" target="__blank"><i className="fab fa-facebook"></i></a>
-            //                     <a href="https://www.instagram.com/locckhl/?hl=vi" target="__blank"><i className="fab fa-instagram"></i></a>
-            //                     <a href="https://www.youtube.com/channel/UCiF_9u_6OLFuQ5UZe8il94w?view_as=subscriber"><i className="fab fa-youtube"></i></a>
-            //                 </span>
-            //             </div>
-            //             <div className="user">
-            //                 {SignUp}
-            //                 {SignIn}
-            //                 {LogOut}
-            //             </div>
-            //         </div>
-            //         {/* bottom-header */}
-            //         <div className="bottom-header">
-            //             <div className="logo">
-            //                 <a href="/" className="text-white" style={{
-            //                     fontSize: "1.5rem",
-            //                     fontWeight: "bold"
-
-            //                 }}> STREETWEAR
-            //                 </a>
-
-            //             </div>
-            //             <div className="nav">
-            //                 <ul className="nav-ul">
-            //                     <li><a href="/"><b>TRANG CHỦ</b></a></li>
-            //                     {/* <li><a href='/'>
-            //                         <b>MENU</b>
-            //                         <i className="fas fa-sort-down"></i>
-
-            //                         <div id="sub-nav">
-            //                             <div className="sub-nav-item-container">
-            //                                 <div className="sub-nav-item">
-
-            //                                 </div>
-            //                                 <div className="sub-nav-item">
-
-            //                                 </div>
-            //                                 <div className="sub-nav-item">
-            //                                     <a href='/menuMilktea'>Phụ kiện</a>
-            //                                 </div>
-            //                             </div>
-            //                         </div>
-            //                     </a></li> */}
-            //                     <li><a href='/menuPizza'><b>Áo</b></a></li>
-            //                     <li><a href='/menuBurger'>Quần</a></li>
-            //                     <li><a href="#" onClick={this.viewOrder}><b>ĐƠN HÀNG</b></a></li>
-            //                 </ul>
-            //             </div>
-
-            //             <form autoComplete='Off' className="input-form">
-            //                 <input type="text" name="productSearch" id="productSearch" onChange={this.handleChange} placeholder="Tìm kiếm sản phẩm" />
-            //                 <div className='search-container-1'>
-            //                     {prefix}
-            //                 </div>
-            //                 <a>
-            //                     <button className="i-2" onClick={(e) => this.handleSubmit(e)}>
-            //                         <i className="fas fa-search search-icon"></i>
-            //                     </button>
-            //                 </a>
-            //                 <input type="text" name="orderSearch" id="orderSearch" onChange={this.handleChange} placeholder="Tìm kiếm đơn hàng" />
-            //                 <a href='/order-detail'>
-            //                     <button className="i-1" onClick={(e) => this.handleSubmit(e)}>
-            //                         <i className="fas fa-search search-icon"></i>
-            //                     </button>
-            //                 </a>
-            //             </form>
-            //             {/* <div className="hot-words">
-            //                 <div className="hot-words-list">
-            //                     <a href="/product">Pizaa</a>
-            //                     <a href="/product">Chicken</a>
-            //                     <a href="/product">Hamburger</a>
-            //                     <a href="/product">Milk tea</a>
-            //                     <a href="/product">Pizaa</a>
-            //                     <a href="/product">Chicken</a>
-            //                     <a href="/product">Hamburger</a>
-            //                     <a href="/product">Milk tea</a>
-            //                 </div>
-            //             </div> */}
-            //             <div className="cart">
-            //                 <div className="ic-cart" >
-            //                     <a href="#" onClick={this.viewCart}>
-            //                         <i className="fas fa-cart-plus"></i>
-            //                         <span className="number-cart">{this.props.count}</span>
-            //                     </a>
-            //                 </div>
-            //                 <div className="text-cart">
-            //                     <h5 className="txt-small">Giỏ hàng</h5>
-            //                     <h4 className="txt-medium">
-            //                         {this.props.Total}đ
-            //                             <i className="fas fa-sort-down"></i>
-            //                     </h4>
-            //                 </div>
-            //                 <div className="list-cart">
-            //                     {displayItems}
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>
         );
     }
 }

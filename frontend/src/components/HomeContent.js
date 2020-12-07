@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+
+import carousel1 from '../Images/carousel-1.jpg';
+import carousel2 from '../Images/carousel-2.jpg';
+import carousel3 from '../Images/carousel-3.jpg';
+
 import '../Css/home.css';
 
 class HomeContent extends Component {
@@ -145,16 +150,13 @@ class HomeContent extends Component {
                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(35).jpg" className="d-block w-100" alt="..." 
-                            style={{
-                                height: "30%"
-                            }}/>
+                            <img src={carousel1} className="d-block w-100" alt="..." />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).jpg" className="d-block w-100" alt="..." />
+                            <img src={carousel2} className="d-block w-100" alt="..." />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" className="d-block w-100" alt="..." />
+                            <img src={carousel3} className="d-block w-100" alt="..." />
                         </div>
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
