@@ -67,7 +67,7 @@ class App extends Component {
     event.preventDefault();
     const username = localStorage.getItem('username');
     if (username) {
-      axios.post('/cart/add', {
+      axios.post('/cart', {
         username: username,
         productID: item.ProductID,
         quantity: quantity,
@@ -103,7 +103,7 @@ class App extends Component {
         count:this.state.count-1,
         Total:this.state.Total-item.Price
       });
-      axios.post('/cart/update',{
+      axios.put('/cart',{
         quantity:item.Quantity,
         username:localStorage.getItem('username'),
         productID:item.ProductID
@@ -123,7 +123,7 @@ Increase = (item,event) => {
       Total: this.state.Total+item.Price
     })
     this.setState({Total:this.state.Total+item.Price});
-  axios.post('/cart/update',{
+  axios.put('/cart',{
       quantity:item.Quantity,
       username:localStorage.getItem('username'),
       productID:item.ProductID

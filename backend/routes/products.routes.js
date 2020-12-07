@@ -4,7 +4,7 @@ const  isAdministrator = require('../middleware/checkPermission');
 
 const productRouter = express.Router();
 
-productRouter.post('/new-product', isAdministrator, async (req, res) => {
+productRouter.post('/', isAdministrator, async (req, res) => {
     // FIXME: check admin 
     // admin sua truc tiep = db nen co the bo
     // ...
@@ -45,11 +45,11 @@ productRouter.post('/new-product', isAdministrator, async (req, res) => {
 });
 
 // FIXME: new new new
-productRouter.post('/update', async (req, res)=> {
+productRouter.put('/', async (req, res)=> {
     
 });
 
-productRouter.get('/list', async (req, res) => {
+productRouter.get('/', async (req, res) => {
     try {
         // console.log(req.query);
         const viewQuery = `

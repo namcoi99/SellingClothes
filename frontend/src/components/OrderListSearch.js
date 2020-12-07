@@ -16,7 +16,7 @@ class OrderListSearch extends Component {
     // async UNSAFE_componentWillMount() {
     //     const username = localStorage.getItem('username');
     //     try {
-    //         const data = await fetch(`http://localhost:5000/order/list/${username}`,
+    //         const data = await fetch(`http://localhost:5000/order?username=${username}`,
     //             {
     //                 method: 'GET',
     //                 headers: {
@@ -37,18 +37,18 @@ class OrderListSearch extends Component {
 
     componentDidMount() {
         axios
-            .get(`/order/list/${this.props.match.params.orderID}`)
+            .get(`/order/${this.props.match.params.orderID}`)
             .then(data => {
                 this.setState({
-                    orders: data.data.data.recordset
+                    orders: data.data.data.orderList
                 })
             })
             .catch(err => console.log(err))
     }
 
     render() {
-        const OrderList = this.state.orders ? this.state.orders.map(item => (
-            <div key={item.OrderID} className="orderlist-item" >
+        const OrderList = this.state.orders ? this.state.orders.map((index, item) => (
+            <div key={index} className="orderlist-item" >
                 <a className="order-id" href={`/order-detail/${item.OrderID}`}>{item.OrderID}</a>
                 <div className="order-date">{item.CreateDate}</div>
                 <div className="order-name">{item.Username}</div>

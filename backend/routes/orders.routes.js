@@ -3,7 +3,7 @@ const sql = require('mssql');
 
 const orderRouter = express.Router();
 
-orderRouter.post('/new-order', async (req, res) => {
+orderRouter.post('/', async (req, res) => {
     try {
         console.log(req.body);
         const orderID = new Date().getTime();
@@ -75,11 +75,11 @@ orderRouter.delete('/:orderID', async (req, res) => {
     }
 });
 
-orderRouter.get('/list/:username', async (req, res) => {
+orderRouter.get('/', async (req, res) => {
     try {
         const result = await new sql.Request().query(`
             SELECT * FROM [Order]
-            WHERE Username = '${req.params.username}'
+            WHERE Username = '${req.query.username}'
             ORDER BY CreateDate DESC 
         `);
         res.status(200).json({

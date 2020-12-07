@@ -17,7 +17,7 @@ class NavBar extends Component {
         })
         if (event.target.name === 'productSearch') {
             if (event.target.value !== '') {
-                axios.get(`/product/list?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
+                axios.get(`/product?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
                     .then(data => {
                         this.setState({
                             products: data.data.data.recordset
@@ -123,7 +123,7 @@ class NavBar extends Component {
             )
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                <a className="navbar-brand" href="/"><i class="fas fa-frog" style={{ fontSize: "2rem" }}></i> <b style={{ fontSize: "1.5rem" }}>STREETWEAR</b></a>
+                <a className="navbar-brand" href="/"><i className="fas fa-frog" style={{ fontSize: "2rem" }}></i> <b style={{ fontSize: "1.5rem" }}>STREETWEAR</b></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                 </button>

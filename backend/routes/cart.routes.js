@@ -3,7 +3,7 @@ const sql = require('mssql');
 
 const cartRouter = express.Router();
 
-cartRouter.post('/add', async (req, res) => {
+cartRouter.post('/', async (req, res) => {
     try {
         const checkResult = await new sql.Request().query(`
             SELECT * FROM [Cart]
@@ -37,7 +37,7 @@ cartRouter.post('/add', async (req, res) => {
     }
 });
 
-cartRouter.delete('/delete', async (req, res) => {
+cartRouter.delete('/', async (req, res) => {
     try {
         const result = await new sql.Request().query(`
             DELETE FROM [Cart]
@@ -52,7 +52,7 @@ cartRouter.delete('/delete', async (req, res) => {
     }
 });
 
-cartRouter.post('/update', async (req, res) => {
+cartRouter.put('/', async (req, res) => {
     try {
         const result = await new sql.Request().query(`
             UPDATE [Cart]

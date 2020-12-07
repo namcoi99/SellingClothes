@@ -61,7 +61,7 @@ class Cart extends Component {
         }
         console.log(orderList);
         try {
-            const data = await fetch("http://localhost:5000/order/new-order/", {
+            const data = await fetch("http://localhost:5000/order", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -92,7 +92,7 @@ class Cart extends Component {
     _Delete = (item, event) => {
         event.preventDefault();
         console.log("xoa no:", item);
-        axios.delete('/cart/delete', {
+        axios.delete('/cart', {
             data: {
                 username: localStorage.getItem('username'),
                 productID: item.ProductID
@@ -119,7 +119,7 @@ class Cart extends Component {
     //         this.setState({Total:0});
     //         this.props.state.Total-=item.Price;
     //     }
-    //     axios.post('/cart/update',{
+    //     axios.put('/cart',{
     //         quantity:item.Quantity-1,
     //         username:localStorage.getItem('username'),
     //         productID:item.productID
