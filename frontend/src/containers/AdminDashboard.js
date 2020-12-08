@@ -22,16 +22,15 @@ class AdminDashboard extends Component {
 
     getData = (pageNumber) => {
         axios
-            .get(`/product/list?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+            .get(`/product?pageNumber=${pageNumber}&pageSize=${pageSize}`)
             .then(data => {
-                console.log(data.data.data.recordset);
+                // console.log(data.data.data.recordset);
                 this.setState({
                     total:  data.data.data.total,
                     results: data.data.data.recordset,
                     maxPageNumber: Math.ceil(data.data.data.total / pageSize)
                 });
-                console.log(this.state.results);
-                console.log("object")
+                // console.log(this.state.results);
             })
             .catch(err => alert(err.message))
     }

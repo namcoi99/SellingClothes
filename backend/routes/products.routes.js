@@ -1,6 +1,6 @@
 const express = require('express');
 const sql = require('mssql');
-const  isAdministrator = require('../middleware/checkPermission');
+const isAdministrator = require('../middleware/checkPermission');
 
 const productRouter = express.Router();
 
@@ -28,7 +28,7 @@ productRouter.post('/', isAdministrator, async (req, res) => {
     }
 });
 
-productRouter.put('/:productID', isAdministrator, async (req, res)=> {
+productRouter.put('/:productID', isAdministrator, async (req, res) => {
     try {
         const query = `
                 UPDATE [Product]
@@ -51,15 +51,17 @@ productRouter.put('/:productID', isAdministrator, async (req, res)=> {
     }
 });
 
-productRouter.delete('/:productID', isAdministrator, async (req, res) => {
+// productRouter.delete('/:productID', isAdministrator, async (req, res) => {
+productRouter.delete('/:productID', async (req, res) => {
     try {
+        console.log(req.params.productID)
         await new sql.Request().query(`
             DELETE FROM [Product]
             WHERE ProductID = '${req.params.productID}'
         `);
         res.status(201).json({ success: true });
     } catch (err) {
-        res.status(500).json({
+        res.json({
             success: false,
             message: err.message
         });
@@ -101,7 +103,7 @@ productRouter.get('/best-seller', async (req, res) => {
     try {
         const result = await new sql.Request().query(`
             SELECT TOP 8 * FROM Product
-            ${req.query.category ? ("WHERE Category LIKE 'N" + req.query.category + "'"):''}
+            ${req.query.category ? ("WHERE Category LIKE 'N" + req.query.category + "'") : ''}
             ORDER BY Sold DESC
         `);
         res.status(201).json({

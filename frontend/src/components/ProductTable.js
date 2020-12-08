@@ -8,13 +8,16 @@ import EditProductModal from './product-form/EditProductModal'
 class ProductTable extends Component {
 
     handleDelete = (itemID) => {
-        // console.log(this.props.storeID);
         axios
-            .delete(`/v1/shops/1/${itemID}`)
+            .delete(`/product/${itemID}`)
             .then(data => {
                 console.log(data.data);
-                alert("Xóa sản phẩm thành công");
-                window.location.reload();
+                if (data.data.success) {
+                    alert("Xóa sản phẩm thành công");
+                    window.location.reload();
+                } else {
+                    window.alert(data.data.message)
+                }
             })
             .catch(err => alert(err.message))
     }
@@ -41,9 +44,9 @@ class ProductTable extends Component {
                     <div className="widget-26-job-starred">
                         <button type="button" className="btn btn-outline-danger btn-sm mr-2"
                             // value={store.id} onClick={this.handleStoreChange}
-                            data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
+                            data-toggle="modal" data-target={`#EditItemModal${item.ProductID}`}>
                             <i className="fas fa-edit"></i></button>
-                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.id}`}>
+                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.ProductID}`}>
                             <i className="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -51,7 +54,7 @@ class ProductTable extends Component {
                 {/* Edit Modal */}
                 <EditProductModal item={item} />
                 {/*  Delete Modal*/}
-                <DelConfirmModal deleteMethod={this.handleDelete} objectID={item.id} />
+                <DelConfirmModal deleteMethod={this.handleDelete} objectID={item.ProductID} />
             </tr>)
         return (
             <div className="container">
