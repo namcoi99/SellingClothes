@@ -1,0 +1,18 @@
+.required {
+    color: red;
+}
+
+.upload-area {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 10px;
+    border: 2px gray dashed;
+}
+
+.upload-icon {
+   font-size: 5rem;
+   display: block!important;
+}
+.add-button {
+    width: 100%!important;
+}

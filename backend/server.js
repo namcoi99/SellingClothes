@@ -17,8 +17,8 @@ const adminRouter = require('./routes/admin.routes');
 // const isAdmin = require('./middleware/checkPermission');
 
 const config = {
-    user: 'csdl',
-    password: '123456789',
+    user: 'sa',
+    password: '123456',
     server: 'localhost',
     database: 'WebCSDL',
     options: {

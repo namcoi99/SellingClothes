@@ -213,10 +213,6 @@
     /* margin: 15px 0 20px 15px; */
 }
 
-.pagination-temp {
-    margin-top: 50px;
-}
-
 .pagination-item {
     display: flex;
     flex-direction: column;

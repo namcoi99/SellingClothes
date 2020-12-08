@@ -1,43 +1,33 @@
 ﻿-- Product
--- Pizza
+-- Shirt
 
 use WebCSDL
 
 select * from Product
 
--- Pizza
+-- Shirt
 INSERT INTO Product
 VALUES 
-('PZ01',N'PIZZA BÒ THƯỢNG HẠNG','299000',N'Vừa Bò viên kiểu Ý, vừa thịt bò thượng hạng. Cắn một miếng thôi là cảm nhận được vị mềm ngọt!','pizza1','Pizza','6'),
-('PZ02',N'PIZZA HẢI SẢN KIỂU SINGAPORE','145000',N'Hải sản phải cay thì mới ngon. Chính là bữa tiệc kiểu Singapore đậm vị!!!','pizza2','Pizza','7'),
-('PZ03',N'PIZZA HẢI SẢN NHIỆT ĐỚI','250000',N'Thưởng thức ngay liều Pizzamin Sea để được "ngập ngụa" trong 3 tầng hương vị topping sảng khoái.','pizza3','Pizza','8'),
-('PZ04',N'1/2 PIZZA HẢI SẢN SỐT MAYONNAISE + 1/2 PIZZA GÀ PHÔ MAI','169000',N'Vừa có gà phô mai lại có thêm thịt heo muối mặn mặn ăn không biết ngán. Bàn tiệc đa dạng topping, sao không thử?!
-','pizza4','Pizza','0'),
-('PZ05',N'PIZZA GÀ SỐT TƯƠNG KIỂU NHẬT','230000',N'Là tín đồ pizza, sao không tận hưởng hương vị độc đáo & tinh tế, pha trộn giữa 2 nền ẩm thực gói gọn trong những miếng bánh ngay hôm nay!!
-!','pizza5','Pizza','15'),
-('PZ06',N'PIZZA XÚC XÍCH PEPPERONI','129000',N'Hương vị truyền thống của đất nước Ý, hương vị pizza ngất ngây đã qua bao thế hệ, nhưng vẫn không hề mất điểm trong lòng những fan cứng của pizza','pizza6','Pizza','0'),
-('PZ07',N'PIZZA BÒ & TÔM','155000',N'Vừa sang vừa ngon, vừa đã mắt vừa đã miệng, bữa tiệc Thịt Bò phối Hải Sản tươi - không thể tuyệt vời hơn!!','pizza7','Pizza','0'),
-('PZ08',N'PIZZA BÁNH MỲ','129000',N'Sự kết hợp độc đáo của biểu tượng phong cách Ý và biểu tượng ẩm thực Việt được yêu thích trên toàn thế giới','pizza8','Pizza','5'),
-('PZ09',N'PIZZA TÁO AN LÀNH','99000',N'Với những lát táo tươi trên nền sốt Caramel ngọt ngào và bột quế thơm nồng','pizza9','Pizza','7'),
-('PZ10',N'PIZZA HẢI SẢN PESTO XANH','169000',N'Là sự kết hợp hoàn hảo giữa tôm, cua, mực và bông cải xanh tươi ngon trên nền sốt Pesto Xanh đậm vị đặc trưng của phong cách ẩm thực miền bắc nước Ý','pizza10','Pizza','0')
+('SH01',N'Blue Tshirt','299000',N'ClownZ x Collectors Tie Dye Tee Flame Dices','shirt1','Shirt','6'),
+('SH02',N'Black Tshirt','145000',N'Pepsi x ClownZ Laugh Now T-shirt','shirt2','Shirt','7'),
+('SH03',N'Oversize T-shirt','250000',N'Pepsi x ClownZ Disorted T-shirt','shirt3','Shirt','8'),
+('SH04',N'White T-shirt','169000',N'ClownZ Terraria Camouflage T-shirt','shirt4','Shirt','0'),
+('SH05',N'Brumano','230000',N'Basebal Typography T-shirt','shirt5','Shirt','15')
 
--- Hamburger
+-- Pants
 INSERT INTO Product
 VALUES
-('HBG08',N'BURGER PHI LÊ GÀ ĐẶC BIỆT','76000',N'Nhiều lớp gà xen kẽ nhau kết hợp với sốt đặc trưng tạo nên hương vị không thể bỏ lỡ <3','hbg8','Hamburger','5'),
-('HBG09',N'BURGER PHÔ MAI','46000',N'Được tạo nên từ phô mai với công thức đặc biệt suốt hằng trăm năm của đất nước Pháp không thể bỏ lỡ!!!','hbg9','Hamburger','7'),
-('HBG10',N'BURGER SIÊU CAY','108000',N'Ớt tươi, mù tạt, tiêu, tỏi, gừng, vân vân và mây mây gia vị. Bạn có dám thử ???','hbg10','Hamburger','2')
+('PA01',N'Nike x Undercover','299000',N'The latest partnership between Jun Takahashi and Nike redefines wet-weather gear.','pants1','Pants','6'),
+('PA02',N'Jordan AJ11 Graphic','145000',N'Make a match in the Jordan AJ11 Graphic Fleece Trousers, featuring prints inspired by the iconic game shoe.','pants2','Pants','7'),
+('PA03',N'Jordan AJ4','250000',N'The Jordan AJ4 Graphic Fleece Trousers are cuffed around the ankles so they dont get in the way of your Js.','pants3','Pants','8'),
+('PA04',N'Nike ACG Polartec Wolf Tree','169000',N'Wet weather doesnt mean you have to stop exploring.','pants4','Pants','0'),
+('PA05',N'Nike Sportswear Windrunner','230000',N'The Nike Sportswear Windrunner Trousers are made from lightweight nylon fabric for a relaxed, comfortable feel.','pants5','Pants','15')
 
--- Milk tea
+-- Bag
 INSERT INTO Product
 VALUES 
-('MT01',N'SỮA CARAMEL MACCHIATO','78000',N'Sữa caramel macchiato','milktea1','Milktea','25'),
-('MT02',N'SỮA MATCHA MACCHIATO','58000',N'Sữa matcha macchiato','milktea2','Milktea','33'),
-('MT03',N'SINH TỐ DƯA HẤU','46000',N'Sinh tố dưa hấu','milktea3','Milktea','10'),
-('MT04',N'NƯỚC CHANH SẢ MẬT ONG','42000',N'Nước chanh sả mật ong','milktea4','Milktea','5'),
-('MT05',N'XOÀI DỪA ĐÁ XAY','69000',N'Xoài Dừa Đá Xay','milktea5','Milktea','21'),
-('MT06',N'VIỆT QUẤT ĐÁ XAY ','59000',N'Việt Quất Đá Xay','milktea6','Milktea','45'),
-('MT07',N'CHANH TUYẾT','57000',N'Chanh Tuyết','milktea7','Milktea','5'),
-('MT08',N'TRÀ ĐÀO CAM SẢ','64000',N'Trà Đào Cam Sả','milktea8','Milktea','7'),
-('MT09',N'TRÀ TÁO BẠC HÀ','57000',N'Trà Táo Bạc Hà','milktea9','Milktea','29'),
-('MT10',N'TRÀ CHANH CHÉM GIÓ ','46000',N'Trà chanh chém gió','milktea10','Milktea','108')
+('BA01',N'Tech Pack','78000',N'The Tech Pack is designed to organize and protect all your tech essentials.','bag1','Bag','25'),
+('BA02',N'Gucci Womens Crocodile Bamboo Convertible Handbag','58000',N'This handbag is as beautiful as it is stunning. The crocodile bears shades of both vanilla cream and a light shade grey.','bag2','Bag','33'),
+('BA03',N'Judith Leiber Nabila Crocodile Exotic Shoulder Bag Mocha','46000',N'When you need a small purse but dont want to sacrifice style, this one is the way to go.','bag3','Bag','10'),
+('BA04',N'Light Pink Crocodile Bamboo Convertible Handbag','42000',N'This small bag has a warm, friendly tone. The crocodile texture is soft pink, giving it a more natural and organic feel.','bag4','Bag','5'),
+('BA05',N'Small Pink Crocodile Bamboo Convertible Handbag','69000',N'When subtlety isnt your specialty and understated isnt your style, then even your small purses need to be loud.','bag5','Bag','21')
