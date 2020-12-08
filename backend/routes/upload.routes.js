@@ -26,7 +26,7 @@ const upload = multer({ //multer settings
 });
 
 // upload.field for upload more fields
-uploadRouter.post("/", upload.single('image'), async (req, res, err) => {
+uploadRouter.post('/', upload.single('image'), async (req, res, err) => {
     console.log(req.file);
     // handle err ??? how 
     res.status(200).json({

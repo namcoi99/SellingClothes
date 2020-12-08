@@ -68,7 +68,7 @@ class App extends Component {
     event.preventDefault();
     const username = localStorage.getItem('username');
     if (username) {
-      axios.post('/cart/add', {
+      axios.post('/cart', {
         username: username,
         productID: item.ProductID,
         quantity: quantity,

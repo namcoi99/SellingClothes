@@ -4,38 +4,22 @@ const  isAdministrator = require('../middleware/checkPermission');
 
 const productRouter = express.Router();
 
-productRouter.post('/new-product', isAdministrator, async (req, res) => {
-    // FIXME: check admin 
-    // admin sua truc tiep = db nen co the bo
-    // ...
+productRouter.post('/', isAdministrator, async (req, res) => {
     try {
-        const checkQuery = `
-            SELECT * FROM Product
-            WHERE ProductID = '${req.body.productID}'
-        `;
-        console.log(checkQuery)
-        const checkResult = await new sql.Request().query(checkQuery);
-        // if (checkResult.rowsAffected[0]) {
-        //     res.json({
-        //         success: false,
-        //         message: "Duplicate ProductID"
-        //     });
-        // } else {
-        const newQuery = `
-                INSERT INTO Product
+        const query = `
+                INSERT INTO [Product]
                 VALUES (
                     '${req.body.productID}',
-                    '${req.body.name}',
+                    N'${req.body.name}',
                     '${req.body.price}',
-                    '${req.body.info}',
+                    N'${req.body.info}',
                     '${req.body.image}',
                     '${req.body.category}',
                     '${req.body.sold}'
                 )
             `;
-        const newResult = await new sql.Request().query(newQuery);
+        await new sql.Request().query(query);
         res.status(201).json({ success: true });
-        // }
     } catch (err) {
         res.status(500).json({
             success: false,
@@ -44,14 +28,46 @@ productRouter.post('/new-product', isAdministrator, async (req, res) => {
     }
 });
 
-// FIXME: new new new
-productRouter.post('/update', async (req, res)=> {
-    
+productRouter.put('/:productID', isAdministrator, async (req, res)=> {
+    try {
+        const query = `
+                UPDATE [Product]
+                SET 
+                    Name = N'${req.body.name}',
+                    Price = '${req.body.price}',
+                    Info = N'${req.body.info}',
+                    Image = '${req.body.image}',
+                    Category = '${req.body.category}',
+                    Sold = '${req.body.sold}'
+                WHERE ProductID = '${req.params.productID}'
+            `;
+        await new sql.Request().query(query);
+        res.status(200).json({ success: true });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
 });
 
-productRouter.get('/list', async (req, res) => {
+productRouter.delete('/:productID', isAdministrator, async (req, res) => {
     try {
-        // console.log(req.query);
+        await new sql.Request().query(`
+            DELETE FROM [Product]
+            WHERE ProductID = '${req.params.productID}'
+        `);
+        res.status(201).json({ success: true });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
+productRouter.get('/', async (req, res) => {
+    try {
         const viewQuery = `
             SELECT * FROM Product
             ${req.query.keyword ? ("WHERE Name LIKE N'%" + req.query.keyword + "%'") : ''}
@@ -59,7 +75,6 @@ productRouter.get('/list', async (req, res) => {
             OFFSET ${(req.query.pageNumber - 1) * req.query.pageSize} ROWS  
             FETCH NEXT ${req.query.pageSize} ROWS ONLY
             `
-        console.log(viewQuery);
         const viewResult = await new sql.Request().query(viewQuery);
         const total = await new sql.Request().query(
             `
@@ -67,7 +82,6 @@ productRouter.get('/list', async (req, res) => {
             ${req.query.keyword ? ("WHERE Name LIKE '%" + req.query.keyword + "%'") : ''}
             `
         );
-        // console.log(total);
         res.status(201).json({
             success: true,
             data: {

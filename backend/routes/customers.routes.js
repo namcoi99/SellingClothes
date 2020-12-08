@@ -83,7 +83,7 @@ customerRouter.post('/login', async (req, res) => {
     }
 });
 
-customerRouter.get('/logout', (req, res) => {
+customerRouter.post('/logout', (req, res) => {
     req.session.destroy();
     res.send({ message: "Logout Success" });
 })
