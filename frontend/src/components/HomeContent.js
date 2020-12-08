@@ -14,7 +14,7 @@ class HomeContent extends Component {
             trendingproducts: [],
             products: [],
             total: 0,
-            currentCategory: 'Pizza',
+            currentCategory: 'Shirt',
             currentPageNumber: 1,
             maxPageNumber: 1,
         }
@@ -82,7 +82,7 @@ class HomeContent extends Component {
                 <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
                     <div className="trending-item-img">
                         <a href={`/product/${item.ProductID}`} target="__blank">
-                            <img src={`http://localhost:5000/image/products/${item.Image}.png`} alt={item.Name}
+                            <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name}
                                 style={{
                                     backgroundPosition: 'center',
                                     backgroundRepeat: 'no-repeate',
@@ -112,31 +112,53 @@ class HomeContent extends Component {
             </div>
         ))
         const Products = this.state.products.map(item => (
-            <div key={item.ProductID} className='trending-item-root'>
-                <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
-                    <div className="trending-item-img">
-                        <a href={`/product/${item.ProductID}`} target="__blank">
-                            <img src={`http://localhost:5000/image/products/${item.Image}.png`} alt={item.Name} />
-                        </a>
-                    </div>
-                    <div className="trending-item-text">
-                        <a href={`/product/${item.ProductID}`} target="__blank">
-                            <h2>{item.Name}</h2>
-                        </a>
-                    </div>
-                    <div className="trending-item-cost">
-                        <span>{item.Price}đ</span>
-                    </div>
-                    <div>Số lượng đã bán: {item.Sold}</div>
-                    <a href='/' onClick={(event) => { this.props.addtoCart(item, 1, event) }}>
-                        <div className="trending-item-expand">
-                            <div className="expand-cart">
-                                <i className="fas fa-cart-plus"></i>
-                                <p>Thêm vào giỏ hàng</p>
-                            </div>
-                        </div>
-                    </a>
+            <div key={item.ProductID} className="card" style={{ width: "20rem" }}>
+                <a href={`/product/${item.ProductID}`} target="__blank"><img className="card-img-top" src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name} style={{
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeate',
+                    height: '300px',
+                    width: '100%'
+                }} /></a>
+                <div className="card-body">
+                    <h2 className="card-title" style={{ fontWeight: "bolder" }}>{item.Name.slice(0,10)}...</h2>
+                    <p className="card-text text-success"><span>{item.Price}đ</span></p>
+                    <p className="">Số lượng đã bán: {item.Sold}</p>
+                    <button type="button" className="btn btn-danger" onClick={(event) => { this.props.addtoCart(item, 1, event) }}>
+                        <i className="fas fa-cart-plus mr-2"></i>  Thêm vào giỏ hàng
+                    </button>
                 </div>
+
+                {/* <div key={item.ProductID} className='trending-item-root'>
+                    <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
+                        <div className="trending-item-img">
+                            <a href={`/product/${item.ProductID}`} target="__blank">
+                                <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name} style={{
+                                    backgroundPosition: 'center',
+                                    backgroundRepeat: 'no-repeate',
+                                    height: '300px',
+                                    width: '100%'
+                                }} />
+                            </a>
+                        </div>
+                        <div className="trending-item-text">
+                            <a href={`/product/${item.ProductID}`} target="__blank">
+                                <h2>{item.Name}</h2>
+                            </a>
+                        </div>
+                        <div className="trending-item-cost">
+                            <span>{item.Price}đ</span>
+                        </div>
+                        <div>Số lượng đã bán: {item.Sold}</div>
+                        <a href='/' onClick={(event) => { this.props.addtoCart(item, 1, event) }}>
+                            <div className="trending-item-expand">
+                                <div className="expand-cart">
+                                    <i className="fas fa-cart-plus"></i>
+                                    <p>Thêm vào giỏ hàng</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div> */}
             </div>
         ))
 
@@ -191,34 +213,34 @@ class HomeContent extends Component {
                         <div className="pagination-item pag-1"
                             onClick={() => {
                                 this.setState({
-                                    currentCategory: 'Pizza',
+                                    currentCategory: 'Shirt',
                                     currentPageNumber: 1,
                                 });
                                 this.getData(1);
                             }} >
-                            <i class="fas fa-tshirt"></i>
+                            <i className="fas fa-tshirt"></i>
                             <h2>Áo</h2>
                         </div>
                         <div className="pagination-item pag-2"
                             onClick={() => {
                                 this.setState({
-                                    currentCategory: 'Hamburger',
+                                    currentCategory: 'Pants',
                                     currentPageNumber: 1,
                                 });
                                 this.getData(1);
                             }} >
-                            <i class="fas fa-socks"></i>
+                            <i className="fas fa-socks"></i>
                             <h2>Quần</h2>
                         </div>
                         <div className="pagination-item pag-3"
                             onClick={() => {
                                 this.setState({
-                                    currentCategory: 'Milktea',
+                                    currentCategory: 'Bag',
                                     currentPageNumber: 1
                                 });
                                 this.getData(1);
                             }} >
-                            <i class="fas fa-shopping-bag"></i>
+                            <i className="fas fa-shopping-bag"></i>
                             <h2>Phụ kiện</h2>
                         </div>
                     </div>

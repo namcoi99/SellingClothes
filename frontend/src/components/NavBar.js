@@ -86,20 +86,20 @@ class NavBar extends Component {
                 </div>
             </a>
         )) : ''
-        const displayItems = this.props.products ? this.props.products.map(item => (
-            <div className="list-item-left">
-                <a key={item.ProductID} href={`/product/${item.ProductID}`}>
-                    <div key={item.ProductID} className="list-item-right">
-                        <i className="fas fa-times" area-hidden="true"></i>
-                        <img src={`http://localhost:5000/image/products/${item.Image}.png`} alt={item.Name} />
-                        <div className="content-item-order">
-                            <h3>{item.Name}</h3>
-                            <p>{item.Price}đ*{item.Quantity}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        )) : ''
+        // const displayItems = this.props.products ? this.props.products.map(item => (
+        //     <div className="list-item-left">
+        //         <a key={item.ProductID} href={`/product/${item.ProductID}`}>
+        //             <div key={item.ProductID} className="list-item-right">
+        //                 <i className="fas fa-times" area-hidden="true"></i>
+        //                 <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name} />
+        //                 <div className="content-item-order">
+        //                     <h3>{item.Name}</h3>
+        //                     <p>{item.Price}đ*{item.Quantity}</p>
+        //                 </div>
+        //             </div>
+        //         </a>
+        //     </div>
+        // )) : ''
 
         var username = localStorage.getItem('username')
         let SignIn
@@ -122,7 +122,7 @@ class NavBar extends Component {
                 <a className="nav-link" href='/' onClick={this.SignOut}>Đăng xuất</a>
             )
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="/"><i class="fas fa-frog" style={{ fontSize: "2rem" }}></i> <b style={{ fontSize: "1.5rem" }}>STREETWEAR</b></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />

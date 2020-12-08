@@ -122,7 +122,7 @@ class Menu extends Component {
                 <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
                     <div className="trending-item-img">
                         <a href={`/product/${item.ProductID}`} target="__blank">
-                            <img src={`http://localhost:5000/image/products/${item.Image}.png`} alt={item.Name}
+                            <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name}
                                 style={{
                                     backgroundPosition: 'center',
                                     backgroundRepeat: 'no-repeate',

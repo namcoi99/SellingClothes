@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import '../css/delconfirm-modal.css'
+import '../Css/delconfirm-modal.css'
 
 export default class DelConfirmModal extends Component {
     render() {

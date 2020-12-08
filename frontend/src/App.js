@@ -12,6 +12,8 @@ import OrderDetail from './components/OrderDetail';
 import './App.scss';
 import OrderListSearch from './components/OrderListSearch.js';
 import AdminDashboard from './containers/AdminDashboard.js';
+import AdminNavbar from './components/AdminNavbar.js';
+import Footer from './components/Footer.js';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -33,7 +35,7 @@ class App extends Component {
           this.setState({
             Total: this.state.Total + item.Price * item.Quantity,
           })
-          this.setState({count:this.state.count+item.Quantity})
+          this.setState({ count: this.state.count + item.Quantity })
         })
       })
       .catch(err => console.log(err))
@@ -84,54 +86,54 @@ class App extends Component {
           })
         })
         .catch(err => console.log(err));
-        this.setState({
-          count: this.state.count + quantity,
-          Total: this.state.Total + item.Price*quantity
-        })
+      this.setState({
+        count: this.state.count + quantity,
+        Total: this.state.Total + item.Price * quantity
+      })
     }
     else {
       alert('You must log in first');
     }
   }
 
-  Decrease = (item,event) => {
+  Decrease = (item, event) => {
     event.preventDefault();
-    if(item.Quantity>1){
+    if (item.Quantity > 1) {
       item.Quantity--;
       this.setState({
-        count:this.state.count-1,
-        Total:this.state.Total-item.Price
+        count: this.state.count - 1,
+        Total: this.state.Total - item.Price
       });
-      axios.post('/cart/update',{
-        quantity:item.Quantity,
-        username:localStorage.getItem('username'),
-        productID:item.ProductID
+      axios.post('/cart/update', {
+        quantity: item.Quantity,
+        username: localStorage.getItem('username'),
+        productID: item.ProductID
       })
+        .then(response => {
+          console.log(response.data.success)
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  Increase = (item, event) => {
+    event.preventDefault();
+    item.Quantity++;
+    this.setState({
+      count: this.state.count + 1,
+      Total: this.state.Total + item.Price
+    })
+    this.setState({ Total: this.state.Total + item.Price });
+    axios.post('/cart/update', {
+      quantity: item.Quantity,
+      username: localStorage.getItem('username'),
+      productID: item.ProductID
+    })
       .then(response => {
         console.log(response.data.success)
       })
-      .catch(err => console.log(err));  
-    } 
-}
-
-Increase = (item,event) => {
-  event.preventDefault();
-    item.Quantity++;
-    this.setState({
-      count:this.state.count+1,
-      Total: this.state.Total+item.Price
-    })
-    this.setState({Total:this.state.Total+item.Price});
-  axios.post('/cart/update',{
-      quantity:item.Quantity,
-      username:localStorage.getItem('username'),
-      productID:item.ProductID
-  })
-  .then(response => {
-      console.log(response.data.success)
-    })
-  .catch(err => console.log(err));
-}
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -143,8 +145,21 @@ Increase = (item,event) => {
                 return <Home {...props} addtoCart={this._addtoCart} state={this.state} />
               }} />
               <Route exact path="/admin" render={(props) => {
-                return <AdminDashboard />
+                return (
+                  <div>
+                    <AdminNavbar />
+                    <AdminDashboard />
+                  </div>
+                )
               }} />
+              {/* <Route exact path="/admin/user" render={(props) => {
+                return (
+                  <div>
+                    <AdminNavbar />
+                    <AdminDashboard />
+                  </div>
+                )
+              }} /> */}
               <Route exact path="/signin" render={(props) => {
                 return <SignIn {...props} state={this.state} _onLogin={this._onLogin} />
               }} />
@@ -164,13 +179,13 @@ Increase = (item,event) => {
                 return <OrderDetail {...props} state={this.state} />
               }} />
               <Route exact path="/menupizza" render={(props) => {
-                return <Menu {...props} addtoCart={this._addtoCart}state={this.state} category={"Pizza"} />
+                return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Shirt"} />
               }} />
               <Route exact path="/menuburger" render={(props) => {
-                return <Menu {...props} addtoCart={this._addtoCart}state={this.state} category={"Hamburger"} />
+                return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Pants"} />
               }} />
               <Route exact path="/menumilktea" render={(props) => {
-                return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Milktea"} />
+                return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Bag"} />
               }} />
               <Route exact path="/order/list/:orderID" render={(props) => {
                 return <OrderListSearch {...props} state={this.state} />
@@ -178,6 +193,7 @@ Increase = (item,event) => {
             </Switch>
           </React.Suspense>
         </BrowserRouter>
+        <Footer />
       </div>
 
     );

@@ -144,7 +144,7 @@ class Cart extends Component {
                     <input type="checkbox" />
                 </div> */}
                 <div className="cart-img">
-                    <img src={`http://localhost:5000/image/products/${item.Image}.png`} alt={item.ProductID} />
+                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.ProductID} />
                 </div>
                 <div className="cart-description">
                     <span>{item.Name}</span>

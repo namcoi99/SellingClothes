@@ -7,45 +7,36 @@ import EditProductModal from './product-form/EditProductModal'
 
 class ProductTable extends Component {
 
-    state = {
-        items: []
-    }
-
-    componentDidMount() {
-        axios
-            .get(`/v1/shops/1/items`)
-            .then(data => {
-                this.setState({
-                    items: data.data
-                })
-                console.log(this.state)
-            })
-            .catch(err => console.log(err))
-    }
-
     handleDelete = (itemID) => {
         // console.log(this.props.storeID);
         axios
-        .delete(`/v1/shops/1/${itemID}`)
-        .then(data => {
-            console.log(data.data);
-            alert("Xóa sản phẩm thành công");  
-            window.location.reload();
-        })
-        .catch(err => alert(err.message))
+            .delete(`/v1/shops/1/${itemID}`)
+            .then(data => {
+                console.log(data.data);
+                alert("Xóa sản phẩm thành công");
+                window.location.reload();
+            })
+            .catch(err => alert(err.message))
     }
 
     render() {
-        const all_items = this.state.items.map(item =>
+        const all_items = this.props.productList.map(item =>
             <tr>
-                <th scope="row">{item.id}</th>
+                <th scope="row">{item.ProductID}</th>
                 <td className="w-25">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/sheep-3.jpg" className="img-fluid img-thumbnail" alt="Sheep" />
+                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} className="img-fluid img-thumbnail" alt="Product Image"
+                        style={{
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeate',
+                            height: '100px',
+                            width: '100px'
+                        }} />
                 </td>
-                <td>{item.item_name}</td>
-                <td>{item.price}$</td>
-                <td>{item.description}</td>
-                <td>{item.quantity}</td>
+                <td>{item.Name}</td>
+                <td>{item.Category}</td>
+                <td>{item.Price}</td>
+                <td>{item.Info}</td>
+                <td>{item.Sold}</td>
                 <td>
                     <div className="widget-26-job-starred">
                         <button type="button" className="btn btn-outline-danger btn-sm mr-2"
@@ -60,10 +51,10 @@ class ProductTable extends Component {
                 {/* Edit Modal */}
                 <EditProductModal item={item} />
                 {/*  Delete Modal*/}
-                <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} />
+                <DelConfirmModal deleteMethod={this.handleDelete} objectID={item.id} />
             </tr>)
         return (
-            <div className="container" style={{ height: "100vh" }}>
+            <div className="container">
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
@@ -79,10 +70,11 @@ class ProductTable extends Component {
                                                                 <th scope="col">ID</th>
                                                                 <th scope="col">Ảnh</th>
                                                                 <th scope="col">Tên sản phẩm</th>
+                                                                <th scope="col">Danh mục</th>
                                                                 <th scope="col">Giá</th>
                                                                 <th scope="col">Mô tả</th>
-                                                                <th scope="col">Số lượng</th>
-                                                                <th scope="col">Actions</th>
+                                                                <th scope="col">Số lượng đã bán</th>
+                                                                <th scope="col"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -94,26 +86,6 @@ class ProductTable extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <nav className="d-flex justify-content-center">
-                                    <ul className="pagination pagination-base pagination-boxed pagination-square mb-0">
-                                        <li className="page-item">
-                                            <a className="page-link no-border" href="#">
-                                                <span aria-hidden="true">«</span>
-                                                <span className="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li className="page-item active"><a className="page-link no-border" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link no-border" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link no-border" href="#">3</a></li>
-                                        <li className="page-item"><a className="page-link no-border" href="#">4</a></li>
-                                        <li className="page-item">
-                                            <a className="page-link no-border" href="#">
-                                                <span aria-hidden="true">»</span>
-                                                <span className="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
                             </div>
                         </div>
                     </div>

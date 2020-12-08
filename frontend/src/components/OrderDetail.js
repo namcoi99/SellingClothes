@@ -56,7 +56,7 @@ class OrderDetail extends Component {
         const orderList = this.state.orderList.map(item => (
             <div className='order-item' key={item.ProductID}>
                 <div className="order-img">
-                    <img src={`http://localhost:5000/image/products/${item.Image}.png`} alt={item.ProductID} />
+                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.ProductID} />
                 </div>
                 <div className="order-description">
                     <span>{item.Name}</span>
