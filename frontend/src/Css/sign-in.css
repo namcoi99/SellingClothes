@@ -80,11 +80,7 @@ margin-top: 3px;
 .top-footer-right-content{
     align-items: baseline;
 }
-.top-footer-right-header h2{
-    color: yellow;
-    font-size: 30px;
-    font-weight: bold;
-}
+
 .top-footer-right-content{
     flex-direction: column;
 }
