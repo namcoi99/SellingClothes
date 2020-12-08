@@ -4,8 +4,12 @@ const isAdministrator = require('../middleware/checkPermission');
 
 const productRouter = express.Router();
 
-productRouter.post('/', isAdministrator, async (req, res) => {
+// productRouter.post('/', isAdministrator, async (req, res) => {
+productRouter.post('/', async (req, res) => {
     try {
+        
+        console.log(req.body)
+        // console.log(req.params.productID)
         const query = `
                 INSERT INTO [Product]
                 VALUES (
@@ -21,15 +25,18 @@ productRouter.post('/', isAdministrator, async (req, res) => {
         await new sql.Request().query(query);
         res.status(201).json({ success: true });
     } catch (err) {
-        res.status(500).json({
+        res.json({
             success: false,
             message: err.message
         });
     }
 });
 
-productRouter.put('/:productID', isAdministrator, async (req, res) => {
+// productRouter.put('/:productID', isAdministrator, async (req, res) => {
+productRouter.put('/:productID', async (req, res) => {
     try {
+        console.log(req.body)
+        console.log(req.params.productID)
         const query = `
                 UPDATE [Product]
                 SET 
@@ -44,7 +51,7 @@ productRouter.put('/:productID', isAdministrator, async (req, res) => {
         await new sql.Request().query(query);
         res.status(200).json({ success: true });
     } catch (err) {
-        res.status(500).json({
+        res.json({
             success: false,
             message: err.message
         });
