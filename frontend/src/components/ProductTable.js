@@ -58,6 +58,7 @@ class ProductTable extends Component {
             </tr>)
         return (
             <div className="container">
+                <button type="button" className="btn btn-dark mb-3" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
@@ -94,7 +95,7 @@ class ProductTable extends Component {
                     </div>
                 </div>
                 {/*  Add Modal*/}
-                <AddProductModal />
+                <AddProductModal action="add"/>
             </div>
         );
     }

@@ -32,11 +32,11 @@ class SignIn extends Component {
                         <div className="sign-up-header">Đăng nhập</div>
                         <form className="form-2" onSubmit={this.handleSubmit}>
                             <div className="form-group col-md-6">
-                                <label for="inputAddress">Username</label>
+                                <label htmlFor="inputAddress">Username</label>
                                 <input type="text" className="form-control" id="username" name="username"  placeholder="User name" value={this.state.username} onChange={this.handleChange}/>
                             </div>
                             <div className="form-group col-md-6">
-                                <label for="inputAddress">Mật khẩu</label>
+                                <label htmlFor="inputAddress">Mật khẩu</label>
                                 <input type="password" className="form-control" id="password" name="password"  placeholder="Password"
                                 value={this.state.password} onChange={this.handleChange}/>
                             </div>  

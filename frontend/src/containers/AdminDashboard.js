@@ -69,7 +69,7 @@ class AdminDashboard extends Component {
         return (
             <div>
                 {/* <UserTable /> */}
-                <div class="container mt-3">
+                <div className="container mt-3">
                     <ProductTable productList={this.state.results}/>
                 </div>
 

@@ -52,10 +52,14 @@ class App extends Component {
             username: response.data.username,
             id: response.data.id
           })
-          console.log(this.state)
+          // console.log(this.state)
           localStorage.setItem('username', response.data.username)
-          console.log(response.data.username)
-          window.location.href = '/';
+          // console.log(response.data.username)
+          if(response.data.username == 'admin') {
+            window.location.href = '/admin';
+          } else {
+            window.location.href = '/';
+          }
         }
         else {
           alert("Wrong username or password");
