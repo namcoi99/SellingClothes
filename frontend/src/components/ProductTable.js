@@ -25,8 +25,8 @@ class ProductTable extends Component {
     render() {
         const all_items = this.props.productList.map(item =>
             <tr>
-                <th scope="row">{item.ProductID}</th>
-                <td className="w-25">
+                <th scope="row" style={{width: "5%"}}>{item.ProductID}</th>
+                <td style={{width: "15%"}}>
                     <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} className="img-fluid img-thumbnail" alt="Product Image"
                         style={{
                             backgroundPosition: 'center',
@@ -35,18 +35,18 @@ class ProductTable extends Component {
                             width: '100px'
                         }} />
                 </td>
-                <td>{item.Name}</td>
-                <td>{item.Category}</td>
-                <td>{item.Price}</td>
-                <td>{item.Info}</td>
-                <td>{item.Sold}</td>
+                <td style={{width: "15%"}}>{item.Name}</td>
+                <td style={{width: "10%"}}>{item.Category}</td>
+                <td style={{width: "10%"}}>{item.Price}</td>
+                <td style={{width: "25%"}}>{item.Info}</td>
+                <td style={{width: "15%"}}>{item.Sold}</td>
                 <td>
                     <div className="widget-26-job-starred">
-                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                        <button type="button" className="btn btn-outline-secondary btn-sm mr-2"
                             // value={store.id} onClick={this.handleStoreChange}
                             data-toggle="modal" data-target={`#EditItemModal${item.ProductID}`}>
                             <i className="fas fa-edit"></i></button>
-                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.ProductID}`}>
+                        <button type="button" className="btn btn-outline-danger btn-sm" data-toggle="modal" data-target={`#delModal${item.ProductID}`}>
                             <i className="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -58,6 +58,7 @@ class ProductTable extends Component {
             </tr>)
         return (
             <div className="container">
+                <button type="button" className="btn btn-dark mb-3" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
@@ -94,7 +95,7 @@ class ProductTable extends Component {
                     </div>
                 </div>
                 {/*  Add Modal*/}
-                <AddProductModal />
+                <AddProductModal action="add"/>
             </div>
         );
     }
