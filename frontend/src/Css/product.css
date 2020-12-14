@@ -194,11 +194,7 @@
 .top-footer-right-product{
     align-items: baseline;
 }
-.top-footer-right-header h2{
-    color: yellow;
-    font-size: 30px;
-    font-weight: bold;
-}
+
 .top-footer-right-product{
     flex-direction: column;
 }
