@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/cart.css';
-import axios from '../axios';
+import axios from 'axios';
 import NavBar from './NavBar';
 
 class Cart extends Component {
@@ -14,7 +14,7 @@ class Cart extends Component {
     async UNSAFE_componentWillMount() {
         const username = localStorage.getItem('username');
         try {
-            const userData = await fetch(`http://localhost:5000/customer/info/${username}`,
+            const userData = await fetch(`http://localhost:5002/info/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -24,7 +24,7 @@ class Cart extends Component {
                 }
             ).then((res) => { return res.json(); });
             console.log(userData.data);
-            const cartData = await fetch(`http://localhost:5000/cart/${username}`,
+            const cartData = await fetch(`http://localhost:5001/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -61,7 +61,7 @@ class Cart extends Component {
         }
         console.log(orderList);
         try {
-            const data = await fetch("http://localhost:5000/order", {
+            const data = await fetch("http://localhost:5003", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -112,31 +112,6 @@ class Cart extends Component {
             .catch(err => console.log(err))
     }
 
-    // Decrease = (item,event) => {
-    //     event.preventDefault();
-    //     if(item.Quantity>1){
-    //         item.Quantity--;
-    //         this.setState({Total:0});
-    //         this.props.state.Total-=item.Price;
-    //     }
-    //     axios.put('/cart',{
-    //         quantity:item.Quantity-1,
-    //         username:localStorage.getItem('username'),
-    //         productID:item.productID
-    //     })
-    //     .then(response => {
-    //         console.log(response.data.success)
-    //       })
-    //     .catch(err => console.log(err));
-    // }
-
-    // Increment = (item,event) => {
-    //     event.preventDefault(); 
-    //     item.Quantity++;
-    //     this.setState({Total:1})
-    //     this.props.state.Total+=item.Price;
-    // }
-
     render() {
         const cartItems = this.state.cartInfo.map(item => (
             <div key={item.ProductID} className="cart-item">
@@ -144,7 +119,7 @@ class Cart extends Component {
                     <input type="checkbox" />
                 </div> */}
                 <div className="cart-img">
-                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.ProductID} />
+                    <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.ProductID} />
                 </div>
                 <div className="cart-description">
                     <span>{item.Name}</span>

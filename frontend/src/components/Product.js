@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../Css/product.css';
 import NavBar from './NavBar';
-import axios from '../axios';
+import axios from 'axios';
 
 class Product extends Component {
     state = {
@@ -11,7 +11,7 @@ class Product extends Component {
 
     componentDidMount() {
         axios
-            .get(`/product/${this.props.match.params.productID}`)
+            .get(`http://localhost:5005/${this.props.match.params.productID}`)
             .then(data => {
                 console.log(data.data)
                 this.setState({
@@ -51,10 +51,10 @@ class Product extends Component {
                     <div className="product-bottom">
                         <div className="product-bottom-left">
                             <div className="product-bottom-left-img">
-                                <img src={`http://localhost:5000/image/products/${this.state.product.Image}.jpg`} alt="" />
+                                <img src={`http://localhost:5005/image/products/${this.state.product.Image}.jpg`} alt="" />
                             </div>
                             <div className="product-bottom-left-share">
-                            <div class="fb-share-button" data-href="https://www.foody.vn/ha-noi/citea-fun-tea-coffee-ta-quang-buu" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.foody.vn%2Fha-noi%2Fcitea-fun-tea-coffee-ta-quang-buu&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                            <div className="fb-share-button" data-href="https://www.foody.vn/ha-noi/citea-fun-tea-coffee-ta-quang-buu" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.foody.vn%2Fha-noi%2Fcitea-fun-tea-coffee-ta-quang-buu&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                                 <a href={`https://twitter.com/intent/tweet?button_hashtag=food&ref_src=twsrc%5Etfw`} className="twitter-hashtag-button" data-url="https://developers.facebook.com/docs/sharing/messenger/web/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
                             </div>
                         </div>

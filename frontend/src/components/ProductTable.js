@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../Css/table.css'
-import axios from '../axios.js'
+import axios from 'axios'
 import AddProductModal from './product-form/AddProductModal'
 import DelConfirmModal from './DelConfirmModal'
 import EditProductModal from './product-form/EditProductModal'
@@ -9,7 +9,7 @@ class ProductTable extends Component {
 
     handleDelete = (itemID) => {
         axios
-            .delete(`/product/${itemID}`)
+            .delete(`http://localhost:5005/${itemID}`)
             .then(data => {
                 console.log(data.data);
                 if (data.data.success) {
@@ -27,7 +27,7 @@ class ProductTable extends Component {
             <tr>
                 <th scope="row" style={{width: "5%"}}>{item.ProductID}</th>
                 <td style={{width: "15%"}}>
-                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} className="img-fluid img-thumbnail" alt="Product Image"
+                    <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} className="img-fluid img-thumbnail" alt="Product Image"
                         style={{
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeate',

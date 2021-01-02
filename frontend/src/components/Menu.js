@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/menu.css'
-import axios from '../axios';
+import axios from 'axios';
 import NavBar from './NavBar';
 
 class Menu extends Component {
@@ -68,7 +68,7 @@ class Menu extends Component {
             sortField: field
         });
         if (this.state.from && this.state.to) {
-            axios.get(`filter/price?from=${this.state.from}&to=${this.state.to}&pageNumber=${pageNumber}&pageSize=4&sortField=${field}&category=${this.state.currentCategory}&sortDirection=${direction}`)
+            axios.get(`http://localhost:5005/filter/price?from=${this.state.from}&to=${this.state.to}&pageNumber=${pageNumber}&pageSize=4&sortField=${field}&category=${this.state.currentCategory}&sortDirection=${direction}`)
                 .then(data => {
                     this.setState({
                         total: data.data.data.total,
@@ -78,7 +78,7 @@ class Menu extends Component {
                 })
                 .catch(err => console.log(err));
         } else {
-            axios.get(`filter/category?pageNumber=${pageNumber}&pageSize=4&sortField=${field}&category=${this.state.currentCategory}&sortDirection=${direction}`)
+            axios.get(`http://localhost:5005/filter/category?pageNumber=${pageNumber}&pageSize=4&sortField=${field}&category=${this.state.currentCategory}&sortDirection=${direction}`)
                 .then(data => {
                     console.log(data.data)
                     this.setState({
@@ -100,7 +100,7 @@ class Menu extends Component {
             sortField: 'ProductID'
         });
         if (this.state.from && this.state.to) {
-            axios.get(`filter/price?from=${this.state.from}&to=${this.state.to}&pageNumber=${pageNumber}&pageSize=4&category=${this.state.currentCategory}&sortDirection=1`)
+            axios.get(`http://localhost:5005/filter/price?from=${this.state.from}&to=${this.state.to}&pageNumber=${pageNumber}&pageSize=4&category=${this.state.currentCategory}&sortDirection=1`)
                 .then(data => {
                     this.setState({
                         total: data.data.data.total,
@@ -121,8 +121,8 @@ class Menu extends Component {
             <div key={item.ProductID} className='trending-item-root'>
                 <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
                     <div className="trending-item-img">
-                        <a href={`/product/${item.ProductID}`} target="__blank">
-                            <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name}
+                        <a href={`http://localhost:5005/${item.ProductID}`} target="__blank">
+                            <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.Name}
                                 style={{
                                     backgroundPosition: 'center',
                                     backgroundRepeat: 'no-repeate',
@@ -132,7 +132,7 @@ class Menu extends Component {
                         </a>
                     </div>
                     <div className="trending-item-text">
-                        <a href={`/product/${item.ProductID}`} target="__blank">
+                        <a href={`http://localhost:5005/${item.ProductID}`} target="__blank">
                             <h2>{item.Name}</h2>
                         </a>
                     </div>

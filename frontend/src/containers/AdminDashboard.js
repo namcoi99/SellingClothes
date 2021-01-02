@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import axios from '../axios'
-
-import AdminNavbar from '../components/AdminNavbar';
+import axios from 'axios'
 import ProductTable from '../components/ProductTable';
-import UserTable from '../components/UserTable';
-
 const pageSize = 4;
 
 class AdminDashboard extends Component {
@@ -22,15 +18,13 @@ class AdminDashboard extends Component {
 
     getData = (pageNumber) => {
         axios
-            .get(`/product?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+            .get(`http://localhost:5005/?pageNumber=${pageNumber}&pageSize=${pageSize}`)
             .then(data => {
-                // console.log(data.data.data.recordset);
                 this.setState({
                     total:  data.data.data.total,
                     results: data.data.data.recordset,
                     maxPageNumber: Math.ceil(data.data.data.total / pageSize)
                 });
-                // console.log(this.state.results);
             })
             .catch(err => alert(err.message))
     }

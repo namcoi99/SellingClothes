@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/header.css';
-import axios from '../axios';
+import axios from 'axios';
 
 class NavBar extends Component {
 
@@ -17,7 +17,7 @@ class NavBar extends Component {
         })
         if (event.target.name === 'productSearch') {
             if (event.target.value !== '') {
-                axios.get(`/product?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
+                axios.get(`http://localhost:5005/?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
                     .then(data => {
                         this.setState({
                             products: data.data.data.recordset
@@ -47,7 +47,7 @@ class NavBar extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/product/best-seller`)
+        axios.get(`http://localhost:5005/best-seller`)
             .then(data => {
                 this.setState({
                     products: data.data.data.recordset

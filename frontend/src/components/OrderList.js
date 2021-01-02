@@ -15,7 +15,7 @@ class Order extends Component {
     async UNSAFE_componentWillMount() {
         const username = localStorage.getItem('username');
         try {
-            const data = await fetch(`http://localhost:5000/order?username=${username}`,
+            const data = await fetch(`http://localhost:5003/?username=${username}`,
                 {
                     method: 'GET',
                     headers: {
