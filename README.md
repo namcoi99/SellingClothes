@@ -18,7 +18,27 @@ Create new database in your local database system.
 Install package in backend & frontend
 
 ```bash
-cd backend
+cd backend/Admin
+npm i
+```
+```bash
+cd backend/Cart
+npm i
+```
+```bash
+cd backend/Customer
+npm i
+```
+```bash
+cd backend/Order
+npm i
+```
+```bash
+cd backend/Product
+npm i
+```
+```bash
+cd backend/UploadImg
 npm i
 ```
 ```bash
