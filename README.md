@@ -26,14 +26,48 @@ cd frontend
 npm i
 ```
 
-## Step 3: Run
-
+## Step 3: Run backend microservices server
+Each terminal runs 1 microservice
+### Admin microservice - localhost:5000
 ```bash
 cd backend
-npm start
+cd Admin
+nodemon admin.js
 ```
+### Cart microservice - localhost:5001
 ```bash
 cd backend
+cd Cart
+nodemon cart.js
+```
+### Customer microservice - localhost:5002
+```bash
+cd backend
+cd Customer
+nodemon customer.js
+```
+### Order microservice - localhost:5003
+```bash
+cd backend
+cd Order
+nodemon order.js
+```
+### Product microservice - localhost:5005
+```bash
+cd backend
+cd Product
+nodemon product.js
+```
+### Upload Image microservice - localhost:5006
+```bash
+cd backend
+cd UploadImg
+nodemon upload.js
+```
+
+## Step 3: Run frontend
+```bash
+cd frontend
 npm start
 ```
 
