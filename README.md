@@ -50,38 +50,32 @@ npm i
 Each terminal runs 1 microservice
 ### Admin microservice - localhost:5000
 ```bash
-cd backend
-cd Admin
+cd backend/Admin
 nodemon admin.js
 ```
 ### Cart microservice - localhost:5001
 ```bash
-cd backend
-cd Cart
+cd backend/Cart
 nodemon cart.js
 ```
 ### Customer microservice - localhost:5002
 ```bash
-cd backend
-cd Customer
+cd backend/Customer
 nodemon customer.js
 ```
 ### Order microservice - localhost:5003
 ```bash
-cd backend
-cd Order
+cd backend/Order
 nodemon order.js
 ```
 ### Product microservice - localhost:5005
 ```bash
-cd backend
-cd Product
+cd backend/Product
 nodemon product.js
 ```
 ### Upload Image microservice - localhost:5006
 ```bash
-cd backend
-cd UploadImg
+cd backend/UploadImg
 nodemon upload.js
 ```
 
