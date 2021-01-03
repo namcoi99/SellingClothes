@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from './axios.js';
+import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -17,7 +17,6 @@ import Footer from './components/Footer.js';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
-
 class App extends Component {
   state = {
     products: [],
@@ -26,7 +25,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/cart/${localStorage.getItem('username')}`)
+    axios.get(`http://localhost:5001/${localStorage.getItem('username')}`)
       .then(data => {
         this.setState({
           products: data.data.data
@@ -42,7 +41,7 @@ class App extends Component {
   }
 
   _onLogin = (username, password) => {
-    axios.post('/customer/login', {
+    axios.post('http://localhost:5002/login', {
       username: username,
       password: password
     })
@@ -52,9 +51,7 @@ class App extends Component {
             username: response.data.username,
             id: response.data.id
           })
-          // console.log(this.state)
           localStorage.setItem('username', response.data.username)
-          // console.log(response.data.username)
           if(response.data.username == 'admin') {
             window.location.href = '/admin';
           } else {
@@ -72,7 +69,7 @@ class App extends Component {
     event.preventDefault();
     const username = localStorage.getItem('username');
     if (username) {
-      axios.post('/cart', {
+      axios.post('http://localhost:5001', {
         username: username,
         productID: item.ProductID,
         quantity: quantity,
@@ -83,7 +80,7 @@ class App extends Component {
           console.log(response.data.success)
         })
         .catch(err => console.log(err));
-      axios.get(`/cart/${localStorage.getItem('username')}`)
+      axios.get(`http://localhost:5001/${localStorage.getItem('username')}`)
         .then(data => {
           this.setState({
             products: data.data.data
@@ -108,7 +105,7 @@ class App extends Component {
         count: this.state.count - 1,
         Total: this.state.Total - item.Price
       });
-      axios.post('/cart/update', {
+      axios.put('http://localhost:5001', {
         quantity: item.Quantity,
         username: localStorage.getItem('username'),
         productID: item.ProductID
@@ -128,7 +125,7 @@ class App extends Component {
       Total: this.state.Total + item.Price
     })
     this.setState({ Total: this.state.Total + item.Price });
-    axios.post('/cart/update', {
+    axios.put('http://localhost:5001', {
       quantity: item.Quantity,
       username: localStorage.getItem('username'),
       productID: item.ProductID

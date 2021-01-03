@@ -1,8 +1,9 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-
-const uploadRouter = express.Router();
+const cors = require('cors');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
 const storage = multer.diskStorage({ //multers disk storage settings
     destination: './public/image/products',
@@ -26,7 +27,7 @@ const upload = multer({ //multer settings
 });
 
 // upload.field for upload more fields
-uploadRouter.post('/', upload.single('image'), async (req, res, err) => {
+app.post('/', upload.single('image'), async (req, res, err) => {
     console.log(req.file);
     // handle err ??? how 
     res.status(200).json({
@@ -36,4 +37,7 @@ uploadRouter.post('/', upload.single('image'), async (req, res, err) => {
     });
 });
 
-module.exports = uploadRouter;
+app.listen(process.env.PORT || 5006, (err) => {
+    if (err) throw err;
+    else console.log("Upload image service listen on port 5006...");
+});

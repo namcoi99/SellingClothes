@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../Css/order-list.css';
 import Navbar from './NavBar';
-import axios from '../axios';
+import axios from 'axios';
 
 class OrderListSearch extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class OrderListSearch extends Component {
 
     componentDidMount() {
         axios
-            .get(`/order/${this.props.match.params.orderID}`)
+            .get(`http://localhost:5003/${this.props.match.params.orderID}`)
             .then(data => {
                 this.setState({
                     orders: data.data.data.orderList
