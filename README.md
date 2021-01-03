@@ -5,6 +5,8 @@ You can download SQL Server via the following link: https://www.microsoft.com/en
 
 Downloading and installing Node.js and npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
+Installing nodemon: https://www.npmjs.com/package/nodemon
+
 ## Step 1: Create database
 
 Create new database in your local database system. 
