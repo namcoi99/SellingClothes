@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/sign-up.css';
-import axios from 'axios';
+import axios from '../axios';
 import Navbar from './NavBar';
 
 class SignUp extends Component {
@@ -29,7 +29,7 @@ class SignUp extends Component {
         event.preventDefault();
         this.state.password === this.state.passwordcf ?
         axios
-          .post('http://localhost:5002/register',{
+          .post('/customer/register',{
               username: this.state.username,
               password: this.state.password,
               name: this.state.name,

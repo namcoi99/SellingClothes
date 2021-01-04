@@ -21,7 +21,7 @@ class OrderDetail extends Component {
         const orderID = window.location.pathname.split('/')[2];
         // console.log(orderID);
         try {
-            const userData = await fetch(`http://localhost:5002/info/${username}`,
+            const userData = await fetch(`http://localhost:5000/customer/info/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -31,7 +31,7 @@ class OrderDetail extends Component {
                 }
             ).then((res) => { return res.json(); });
             console.log(userData.data);
-            const data = await fetch(`http://localhost:5003/${orderID}`,
+            const data = await fetch(`http://localhost:5000/order/${orderID}`,
                 {
                     method: 'GET',
                     headers: {
@@ -56,7 +56,7 @@ class OrderDetail extends Component {
         const orderList = this.state.orderList.map(item => (
             <div className='order-item' key={item.ProductID}>
                 <div className="order-img">
-                    <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.ProductID} />
+                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.ProductID} />
                 </div>
                 <div className="order-description">
                     <span>{item.Name}</span>

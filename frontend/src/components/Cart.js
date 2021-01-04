@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/cart.css';
-import axios from 'axios';
+import axios from '../axios';
 import NavBar from './NavBar';
 
 class Cart extends Component {
@@ -14,7 +14,7 @@ class Cart extends Component {
     async UNSAFE_componentWillMount() {
         const username = localStorage.getItem('username');
         try {
-            const userData = await fetch(`http://localhost:5002/info/${username}`,
+            const userData = await fetch(`http://localhost:5000/customer/info/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -24,7 +24,7 @@ class Cart extends Component {
                 }
             ).then((res) => { return res.json(); });
             console.log(userData.data);
-            const cartData = await fetch(`http://localhost:5001/${username}`,
+            const cartData = await fetch(`http://localhost:5000/cart/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -61,7 +61,7 @@ class Cart extends Component {
         }
         console.log(orderList);
         try {
-            const data = await fetch("http://localhost:5003", {
+            const data = await fetch("http://localhost:5000/order", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -119,7 +119,7 @@ class Cart extends Component {
                     <input type="checkbox" />
                 </div> */}
                 <div className="cart-img">
-                    <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.ProductID} />
+                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.ProductID} />
                 </div>
                 <div className="cart-description">
                     <span>{item.Name}</span>
@@ -146,11 +146,6 @@ class Cart extends Component {
             <div>
                 <NavBar products={this.props.state.products} handleSearch={this.props.handleSearch} Total={this.props.state.Total} count={this.props.state.count} />
                 <div className="cartcontent">
-                <div className="cart-top">
-                   <a href="/">Trang chủ</a>
-                   <i className="fas fa-chevron-right"></i>
-                   <a href="/">Giỏ hàng</a>
-               </div>
                     <div className="cart-bottom">
                         <div className="cart-bottom-left">
                         <div className="cart-header">

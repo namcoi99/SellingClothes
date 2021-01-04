@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from './axios.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -11,11 +11,13 @@ import OrderList from './components/OrderList';
 import OrderDetail from './components/OrderDetail';
 import './App.scss';
 import OrderListSearch from './components/OrderListSearch.js';
-import AdminDashboard from './containers/AdminDashboard.js';
+import ProductPage from './containers/admin/ProductPage.js';
 import AdminNavbar from './components/AdminNavbar.js';
 import Footer from './components/Footer.js';
+import OrderPage from './containers/admin/OrderPage.js';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
+
 
 class App extends Component {
   state = {
@@ -51,7 +53,9 @@ class App extends Component {
             username: response.data.username,
             id: response.data.id
           })
+          // console.log(this.state)
           localStorage.setItem('username', response.data.username)
+          // console.log(response.data.username)
           if(response.data.username == 'admin') {
             window.location.href = '/admin';
           } else {
@@ -64,6 +68,14 @@ class App extends Component {
       })
       .catch(err => console.log(err))
   }
+
+  _checkAdmin = function () {
+    // console.log(window.localStorage.getItem('username'));
+    if (window.localStorage.getItem('username') !== 'admin') {
+      alert("You do not have permission to access");
+      window.location.href = "/"
+    }
+  };
 
   _addtoCart = (item, quantity, event) => {
     event.preventDefault();
@@ -145,22 +157,22 @@ class App extends Component {
               <Route exact path="/" render={(props) => {
                 return <Home {...props} addtoCart={this._addtoCart} state={this.state} />
               }} />
-              <Route exact path="/admin" render={(props) => {
+              <Route exact path="/admin" checkAdmin={this._checkAdmin} render={(props) => {
                 return (
                   <div>
                     <AdminNavbar />
-                    <AdminDashboard />
+                    <ProductPage />
                   </div>
                 )
               }} />
-              {/* <Route exact path="/admin/user" render={(props) => {
+              <Route exact path="/admin/order-list" checkAdmin={this._checkAdmin} render={(props) => {
                 return (
                   <div>
                     <AdminNavbar />
-                    <AdminDashboard />
+                    <OrderPage />
                   </div>
                 )
-              }} /> */}
+              }} />
               <Route exact path="/signin" render={(props) => {
                 return <SignIn {...props} state={this.state} _onLogin={this._onLogin} />
               }} />

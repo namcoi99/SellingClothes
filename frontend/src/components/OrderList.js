@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/order-list.css';
+import axios from '../axios'
 import Navbar from './NavBar';
 
 class Order extends Component {
@@ -10,28 +11,25 @@ class Order extends Component {
             orderDetails: [],
             total: 0
         }
+        this.getData()
     }
 
-    async UNSAFE_componentWillMount() {
+    getData = () => {
         const username = localStorage.getItem('username');
-        try {
-            const data = await fetch(`http://localhost:5003/?username=${username}`,
-                {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include'
+        axios
+            .get(`order?username=${username}`)
+            .then(data => {
+                console.log(data.data);
+                if (data.success) {
+                    this.setState({
+                        orderDetails: data.data.recordset,
+                        total: data.data.total
+                    });
+                } else {
+                    alert(data.data.message)
                 }
-            ).then((res) => { return res.json(); });
-            console.log(data.data);
-            this.setState({
-                orderDetails: data.data.recordset,
-                total: data.data.total
-            });
-        } catch (err) {
-            console.log(err.message);
-        }
+            })
+            .catch(err => alert(err.message))
     }
 
     render() {
@@ -39,7 +37,7 @@ class Order extends Component {
         const OrderList = this.state.orderDetails.map(item => (
             <div key={item.OrderID} className="orderlist-item" >
                 <a className="order-id" href={`/order-detail/${item.OrderID}`}>{item.OrderID}</a>
-                <div className="order-date">{item.CreateDate.substr(0,10)}</div>
+                <div className="order-date">{item.CreateDate.substr(0, 10)}</div>
                 <div className="order-name">{item.Username}</div>
                 <div className="order-total">{item.Total}</div>
                 <div className="order-status">{item.Status}</div>

@@ -24,7 +24,7 @@ class HomeContent extends Component {
 
     getTrending = async () => {
         try {
-            const data = await fetch(`http://localhost:5005/best-seller`,
+            const data = await fetch(`http://localhost:5000/product/best-seller`,
             ).then((res) => { return res.json(); });
             this.setState({
                 trendingproducts: data.data
@@ -35,7 +35,7 @@ class HomeContent extends Component {
     }
     getData = async (pageNumber) => {
         try {
-            const data = await fetch(`http://localhost:5005/filter/category?pageNumber=${pageNumber}&pageSize=4&category=${this.state.currentCategory}`,
+            const data = await fetch(`http://localhost:5000/filter/category?pageNumber=${pageNumber}&pageSize=4&category=${this.state.currentCategory}`,
             ).then((res) => { return res.json(); });
             this.setState({
                 total: data.data.total,
@@ -82,7 +82,7 @@ class HomeContent extends Component {
                 <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
                     <div className="trending-item-img">
                         <a href={`/product/${item.ProductID}`} target="__blank">
-                            <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.Name}
+                            <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name}
                                 style={{
                                     backgroundPosition: 'center',
                                     backgroundRepeat: 'no-repeate',
@@ -113,7 +113,7 @@ class HomeContent extends Component {
         ))
         const Products = this.state.products.map(item => (
             <div key={item.ProductID} className="card" style={{ width: "20rem" }}>
-                <a href={`/product/${item.ProductID}`} target="__blank"><img className="card-img-top" src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.Name} style={{
+                <a href={`/product/${item.ProductID}`} target="__blank"><img className="card-img-top" src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name} style={{
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeate',
                     height: '300px',
@@ -127,6 +127,38 @@ class HomeContent extends Component {
                         <i className="fas fa-cart-plus mr-2"></i>  Thêm vào giỏ hàng
                     </button>
                 </div>
+
+                {/* <div key={item.ProductID} className='trending-item-root'>
+                    <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
+                        <div className="trending-item-img">
+                            <a href={`/product/${item.ProductID}`} target="__blank">
+                                <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name} style={{
+                                    backgroundPosition: 'center',
+                                    backgroundRepeat: 'no-repeate',
+                                    height: '300px',
+                                    width: '100%'
+                                }} />
+                            </a>
+                        </div>
+                        <div className="trending-item-text">
+                            <a href={`/product/${item.ProductID}`} target="__blank">
+                                <h2>{item.Name}</h2>
+                            </a>
+                        </div>
+                        <div className="trending-item-cost">
+                            <span>{item.Price}đ</span>
+                        </div>
+                        <div>Số lượng đã bán: {item.Sold}</div>
+                        <a href='/' onClick={(event) => { this.props.addtoCart(item, 1, event) }}>
+                            <div className="trending-item-expand">
+                                <div className="expand-cart">
+                                    <i className="fas fa-cart-plus"></i>
+                                    <p>Thêm vào giỏ hàng</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div> */}
             </div>
         ))
 
@@ -179,8 +211,8 @@ class HomeContent extends Component {
                     {/* pagination */}
                     <div className="pagination">
                         <div className="pagination-item pag-1"
-                            onClick={async () => {
-                                await this.setState({
+                            onClick={() => {
+                                this.setState({
                                     currentCategory: 'Shirt',
                                     currentPageNumber: 1,
                                 });
@@ -190,8 +222,8 @@ class HomeContent extends Component {
                             <h2>Áo</h2>
                         </div>
                         <div className="pagination-item pag-2"
-                            onClick={async () => {
-                                await this.setState({
+                            onClick={() => {
+                                this.setState({
                                     currentCategory: 'Pants',
                                     currentPageNumber: 1,
                                 });
@@ -201,8 +233,8 @@ class HomeContent extends Component {
                             <h2>Quần</h2>
                         </div>
                         <div className="pagination-item pag-3"
-                            onClick={async () => {
-                                await this.setState({
+                            onClick={() => {
+                                this.setState({
                                     currentCategory: 'Bag',
                                     currentPageNumber: 1
                                 });

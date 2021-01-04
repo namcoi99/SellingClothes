@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import ProductTable from '../components/ProductTable';
+import axios from '../../axios'
+
+import ProductTable from '../../components/ProductTable';
+
 const pageSize = 4;
 
-class AdminDashboard extends Component {
+class ProductPage extends Component {
     constructor(props) {
         super(props)
 
@@ -18,13 +20,15 @@ class AdminDashboard extends Component {
 
     getData = (pageNumber) => {
         axios
-            .get(`http://localhost:5005/?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+            .get(`/product?pageNumber=${pageNumber}&pageSize=${pageSize}`)
             .then(data => {
+                // console.log(data.data.data.recordset);
                 this.setState({
                     total:  data.data.data.total,
                     results: data.data.data.recordset,
                     maxPageNumber: Math.ceil(data.data.data.total / pageSize)
                 });
+                // console.log(this.state.results);
             })
             .catch(err => alert(err.message))
     }
@@ -62,9 +66,8 @@ class AdminDashboard extends Component {
 
         return (
             <div>
-                {/* <UserTable /> */}
-                <div className="container mt-3">
-                    <ProductTable productList={this.state.results}/>
+                <div className="container mt-3" style={{minHeight: "80vh"}}>
+                    <ProductTable productList={this.state.results} total={this.state.total}/>
                 </div>
 
                 {/* Pagination */}
@@ -102,4 +105,4 @@ class AdminDashboard extends Component {
     }
 }
 
-export default AdminDashboard;
+export default ProductPage;

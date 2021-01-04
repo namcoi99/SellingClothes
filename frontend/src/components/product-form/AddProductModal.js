@@ -10,10 +10,6 @@ export default class AddProductModal extends Component {
     render() {
         return (
             <div>
-                {/* Button trigger modal */}
-                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addModal">
-                    Thêm sản phẩm
-                </button> */}
                 {/* Modal */}
                 <div className="modal fade add-modal" id="addModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div className="modal-dialog" role="document" style={{ maxWidth: "40vw" }}>

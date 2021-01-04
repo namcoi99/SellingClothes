@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import '../Css/table.css'
 import axios from '../axios.js'
-import AddProductModal from './product-form/AddProductModal'
 import DelConfirmModal from './DelConfirmModal'
 import EditProductModal from './product-form/EditProductModal'
 
@@ -9,14 +8,14 @@ class ProductTable extends Component {
 
     handleDelete = (itemID) => {
         axios
-            .delete(`/product/${itemID}`)
+            .delete(`/order/${itemID}`)
             .then(data => {
                 console.log(data.data);
                 if (data.data.success) {
-                    alert("Xóa sản phẩm thành công");
+                    alert("Xóa đơn hàng thành công");
                     window.location.reload();
                 } else {
-                    window.alert("Sản phẩm đang nằm trong giỏ hàng hoặc đơn hàng. Không thể thực hiện hành động này!")
+                    window.alert(data.data.message);
                 }
             })
             .catch(err => alert(err.message))
@@ -25,40 +24,29 @@ class ProductTable extends Component {
     render() {
         const all_items = this.props.productList.map(item =>
             <tr>
-                <th scope="row" style={{width: "5%"}}>{item.ProductID}</th>
-                <td style={{width: "15%"}}>
-                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} className="img-fluid img-thumbnail" alt="Product Image"
-                        style={{
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeate',
-                            height: '100px',
-                            width: '100px'
-                        }} />
-                </td>
-                <td style={{width: "15%"}}>{item.Name}</td>
-                <td style={{width: "10%"}}>{item.Category}</td>
-                <td style={{width: "10%"}}>{item.Price}</td>
-                <td style={{width: "25%"}}>{item.Info}</td>
-                <td style={{width: "15%"}}>{item.Sold}</td>
+                <td style={{width: "15%"}}>{item.OrderID}</td>
+                <td style={{width: "20%"}}>{item.CreateDate.substr(0,10)}</td>
+                <td style={{width: "20%"}}>{item.Username}</td>
+                <td style={{width: "20%"}}>{item.Total}</td>
+                <td style={{width: "25%"}}>{item.Status}</td>
                 <td>
                     <div className="widget-26-job-starred">
-                        <button type="button" className="btn btn-outline-secondary btn-sm mr-2"
+                        {/* <button type="button" className="btn btn-outline-secondary btn-sm mr-2"
                             // value={store.id} onClick={this.handleStoreChange}
                             data-toggle="modal" data-target={`#EditItemModal${item.ProductID}`}>
-                            <i className="fas fa-edit"></i></button>
-                        <button type="button" className="btn btn-outline-danger btn-sm" data-toggle="modal" data-target={`#delModal${item.ProductID}`}>
+                            <i className="fas fa-edit"></i></button> */}
+                        <button type="button" className="btn btn-outline-danger btn-sm" data-toggle="modal" data-target={`#delModal${item.OrderID}`}>
                             <i className="fas fa-trash-alt"></i>
                         </button>
                     </div>
                 </td>
                 {/* Edit Modal */}
-                <EditProductModal item={item} />
+                {/* <EditProductModal item={item} /> */}
                 {/*  Delete Modal*/}
-                <DelConfirmModal deleteMethod={this.handleDelete} objectID={item.ProductID} />
+                <DelConfirmModal deleteMethod={this.handleDelete} objectID={item.OrderID} />
             </tr>)
         return (
             <div className="container">
-                <button type="button" className="btn btn-dark mb-3" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
@@ -71,14 +59,12 @@ class ProductTable extends Component {
                                                     <table className="table widget-26">
                                                         <thead className="thead-dark">
                                                             <tr>
-                                                                <th scope="col">ID</th>
-                                                                <th scope="col">Ảnh</th>
-                                                                <th scope="col">Tên sản phẩm</th>
-                                                                <th scope="col">Danh mục</th>
-                                                                <th scope="col">Giá</th>
-                                                                <th scope="col">Mô tả</th>
-                                                                <th scope="col">Số lượng đã bán</th>
-                                                                <th scope="col"></th>
+                                                                <th scope="col">Mã đơn hàng</th>
+                                                                <th scope="col">Ngày đặt hàng</th>
+                                                                <th scope="col">Khách hàng</th>
+                                                                <th scope="col">Tổng giá trị</th>
+                                                                <th scope="col">Trạng thái</th>
+                                                                <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -94,8 +80,6 @@ class ProductTable extends Component {
                         </div>
                     </div>
                 </div>
-                {/*  Add Modal*/}
-                <AddProductModal action="add" total={this.props.total}/>
             </div>
         );
     }
