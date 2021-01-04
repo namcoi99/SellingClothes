@@ -39,7 +39,7 @@ class App extends Component {
           this.setState({ count: this.state.count + item.Quantity })
         })
       })
-      .catch(err => console(err))
+      .catch(err => console.log(err))
   }
 
   _onLogin = (username, password) => {
