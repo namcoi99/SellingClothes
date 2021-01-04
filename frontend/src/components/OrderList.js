@@ -17,14 +17,15 @@ class Order extends Component {
     getData = () => {
         const username = localStorage.getItem('username');
         axios
-            .get(`order?username=${username}`)
+            .get(`http://localhost:5003?username=${username}`)
             .then(data => {
-                console.log(data.data);
-                if (data.success) {
+                console.log(data.data.data.recordset);
+                if (data.data.success) {
                     this.setState({
-                        orderDetails: data.data.recordset,
-                        total: data.data.total
+                        orderDetails: data.data.data.recordset,
+                        total: data.data.data.total
                     });
+                    console.log(this.state)
                 } else {
                     alert(data.data.message)
                 }

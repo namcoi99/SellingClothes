@@ -3,17 +3,6 @@ GO
 
 USE WebCSDL
 
--- Table
--- DROP TABLE [User]
---CREATE TABLE [User]
-(
-	Name text,
-	Username varchar(20) UNIQUE NOT NULL,
-	Password text NOT NULL,
-	PRIMARY KEY (Username)
-)
-GO
-
 DROP TABLE [Customer]
 CREATE TABLE [Customer]
 (
@@ -30,7 +19,7 @@ GO
 DROP TABLE [Product]
 CREATE TABLE [Product]
 (
-	ProductID varchar(5),
+	ProductID int IDENTITY(1,1),
 	Name ntext,
 	Price decimal(10,0),
 	Info ntext,
@@ -57,7 +46,7 @@ DROP TABLE [OrderList]
 CREATE TABLE [OrderList]
 (
 	OrderID varchar(20),
-	ProductID varchar(5),
+	ProductID int,
 	Quantity int,
 	PRIMARY KEY (OrderID, ProductID),
 	FOREIGN KEY (OrderID) REFERENCES [Order] (OrderID),
@@ -68,7 +57,7 @@ DROP TABLE [Cart]
 CREATE TABLE [Cart]
 (
 	Username varchar(20),
-	ProductID varchar(5),
+	ProductID int,
 	Quantity int,
 	PRIMARY KEY (Username, ProductID),
 	FOREIGN KEY (Username) REFERENCES [Customer] (Username),

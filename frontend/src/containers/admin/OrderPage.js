@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../axios'
+import axios from 'axios'
 
 import OrderTable from '../../components/OrderTable';
 
@@ -16,7 +16,7 @@ class OrderPage extends Component {
 
     getData = () => {
         axios
-            .get(`order/`)
+            .get(`http://localhost:5003`)
             .then(data => {
                 // console.log(data.data.data.recordset);
                 this.setState({

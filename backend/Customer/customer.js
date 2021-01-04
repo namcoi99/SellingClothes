@@ -84,7 +84,7 @@ sql.connect(config, (err, pool) => {
                 const checkResult = await new sql.Request().query(checkQuery);
                 // console.log(checkResult);
                 if (!checkResult.rowsAffected[0] || !bcryptjs.compareSync(req.body.password, checkResult.recordset[0].Password)) {
-                    res.status(400).json({
+                    res.json({
                         success: false,
                         message: "Incorrect Username or Password"
                     });
@@ -93,7 +93,7 @@ sql.connect(config, (err, pool) => {
                         username: req.body.username,
                         permission: checkResult.recordset[0].Permission
                     }
-                    res.status(200).json({
+                    res.json({
                         success: true,
                         message: "Login Success",
                         username: req.body.username,

@@ -3,6 +3,7 @@ const sql = require('mssql');
 const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 
 const config = {
     user: 'sa',
@@ -38,15 +39,15 @@ sql.connect(config, (err, pool) => {
                 const query = `
                         INSERT INTO [Product]
                         VALUES (
-                            '${req.body.productID}',
                             N'${req.body.name}',
-                            '${req.body.price}',
+                            ${req.body.price},
                             N'${req.body.info}',
-                            '${req.body.image}',
+                            ${req.body.filename ? (req.body.filename + ',') : "'abc',"}
                             '${req.body.category}',
-                            '${req.body.sold}'
+                            ${req.body.sold}
                         )
                     `;
+                console.log(query)
                 await new sql.Request().query(query);
                 res.status(201).json({ success: true });
             } catch (err) {
@@ -57,6 +58,7 @@ sql.connect(config, (err, pool) => {
             }
         });
         
+        // app.put('/:productID', isAdministrator, async (req, res) => {
         app.put('/:productID', async (req, res) => {
             try {
                 console.log(req.body)
@@ -65,11 +67,11 @@ sql.connect(config, (err, pool) => {
                         UPDATE [Product]
                         SET 
                             Name = N'${req.body.name}',
-                            Price = '${req.body.price}',
+                            Price = ${req.body.price},
                             Info = N'${req.body.info}',
-                            Image = '${req.body.image}',
+                            ${req.body.filename ? (`Image = ${req.body.filename},`) : ''}
                             Category = '${req.body.category}',
-                            Sold = '${req.body.sold}'
+                            Sold = ${req.body.sold}
                         WHERE ProductID = '${req.params.productID}'
                     `;
                 await new sql.Request().query(query);
@@ -81,7 +83,8 @@ sql.connect(config, (err, pool) => {
                 });
             }
         });
-
+        
+        // app.delete('/:productID', isAdministrator, async (req, res) => {
         app.delete('/:productID', async (req, res) => {
             try {
                 console.log(req.params.productID)

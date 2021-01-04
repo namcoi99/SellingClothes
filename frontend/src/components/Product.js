@@ -11,7 +11,7 @@ class Product extends Component {
 
     componentDidMount() {
         axios
-            .get(`/product/${this.props.match.params.productID}`)
+            .get(`http://localhost:5005/${this.props.match.params.productID}`)
             .then(data => {
                 console.log(data.data)
                 this.setState({
@@ -46,12 +46,12 @@ class Product extends Component {
                         <i className="fas fa-chevron-right"></i>
                         <a href={`/menu${this.state.product.Category}`}>{this.state.product.Category}</a>
                         <i className="fas fa-chevron-right"></i>
-                        <a href={`/product/${this.state.product.ProductID}`}>{this.state.product.Name}</a>
+                        <a href={`http://localhost:5005/${this.state.product.ProductID}`}>{this.state.product.Name}</a>
                     </div> */}
                     <div className="product-bottom">
                         <div className="product-bottom-left">
                             <div className="product-bottom-left-img">
-                                <img src={`http://localhost:5000/image/products/${this.state.product.Image}.jpg`} alt="" />
+                                <img src={`/image/products/${this.state.product.Image}.jpg`} alt="" />
                             </div>
                             <div className="product-bottom-left-share">
                             <div class="fb-share-button" data-href="https://www.foody.vn/ha-noi/citea-fun-tea-coffee-ta-quang-buu" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.foody.vn%2Fha-noi%2Fcitea-fun-tea-coffee-ta-quang-buu&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>

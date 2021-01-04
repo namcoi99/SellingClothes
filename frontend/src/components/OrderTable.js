@@ -8,7 +8,7 @@ class ProductTable extends Component {
 
     handleDelete = (itemID) => {
         axios
-            .delete(`/order/${itemID}`)
+            .delete(`http://localhost:5003/${itemID}`)
             .then(data => {
                 console.log(data.data);
                 if (data.data.success) {

@@ -33,11 +33,11 @@ class SignIn extends Component {
                         <form className="form-2" onSubmit={this.handleSubmit}>
                             <div className="form-group col-md-6">
                                 <label htmlFor="inputAddress">Username</label>
-                                <input type="text" className="form-control" id="username" name="username"  placeholder="User name" value={this.state.username} onChange={this.handleChange}/>
+                                <input type="text" className="form-control" id="username" name="username" required placeholder="User name" value={this.state.username} onChange={this.handleChange}/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label htmlFor="inputAddress">Mật khẩu</label>
-                                <input type="password" className="form-control" id="password" name="password"  placeholder="Password"
+                                <input type="password" className="form-control" id="password" name="password" required placeholder="Password"
                                 value={this.state.password} onChange={this.handleChange}/>
                             </div>  
                             <button className="btn btn-primary">Đăng nhập</button>

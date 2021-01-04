@@ -13,31 +13,9 @@ class OrderListSearch extends Component {
         }
     }
 
-    // async UNSAFE_componentWillMount() {
-    //     const username = localStorage.getItem('username');
-    //     try {
-    //         const data = await fetch(`http://localhost:5000/order?username=${username}`,
-    //             {
-    //                 method: 'GET',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 credentials: 'include'
-    //             }
-    //         ).then((res) => { return res.json(); });
-    //         console.log(data.data);
-    //         this.setState({
-    //             orderDetails: data.data.recordset,
-    //             total: data.data.total
-    //         });
-    //     } catch (err) {
-    //         console.log(err.message);
-    //     }
-    // }
-
     componentDidMount() {
         axios
-            .get(`/order/${this.props.match.params.orderID}`)
+            .get(`http://localhost:5003/${this.props.match.params.orderID}`)
             .then(data => {
                 this.setState({
                     orders: data.data.data.orderList

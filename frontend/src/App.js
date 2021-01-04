@@ -39,7 +39,7 @@ class App extends Component {
           this.setState({ count: this.state.count + item.Quantity })
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => console(err))
   }
 
   _onLogin = (username, password) => {
@@ -81,7 +81,7 @@ class App extends Component {
     event.preventDefault();
     const username = localStorage.getItem('username');
     if (username) {
-      axios.post('http://localhost:5001', {
+      axios.post(`http://localhost:5001`, {
         username: username,
         productID: item.ProductID,
         quantity: quantity,
@@ -191,13 +191,13 @@ class App extends Component {
               <Route exact path="/order-detail/:orderID" render={(props) => {
                 return <OrderDetail {...props} state={this.state} />
               }} />
-              <Route exact path="/menupizza" render={(props) => {
+              <Route exact path="/Shirt" render={(props) => {
                 return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Shirt"} />
               }} />
-              <Route exact path="/menuburger" render={(props) => {
+              <Route exact path="/Pant" render={(props) => {
                 return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Pants"} />
               }} />
-              <Route exact path="/menumilktea" render={(props) => {
+              <Route exact path="/Bag" render={(props) => {
                 return <Menu {...props} addtoCart={this._addtoCart} state={this.state} category={"Bag"} />
               }} />
               <Route exact path="/order/list/:orderID" render={(props) => {

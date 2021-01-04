@@ -14,7 +14,7 @@ class Cart extends Component {
     async UNSAFE_componentWillMount() {
         const username = localStorage.getItem('username');
         try {
-            const userData = await fetch(`http://localhost:5000/customer/info/${username}`,
+            const userData = await fetch(`http://localhost:5002/info/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -24,7 +24,7 @@ class Cart extends Component {
                 }
             ).then((res) => { return res.json(); });
             console.log(userData.data);
-            const cartData = await fetch(`http://localhost:5000/cart/${username}`,
+            const cartData = await fetch(`http://localhost:5001/${username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -61,7 +61,7 @@ class Cart extends Component {
         }
         console.log(orderList);
         try {
-            const data = await fetch("http://localhost:5000/order", {
+            const data = await fetch("http://localhost:5003", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -92,7 +92,7 @@ class Cart extends Component {
     _Delete = (item, event) => {
         event.preventDefault();
         console.log("xoa no:", item);
-        axios.delete('/cart', {
+        axios.delete('http://localhost:5001', {
             data: {
                 username: localStorage.getItem('username'),
                 productID: item.ProductID
@@ -119,7 +119,7 @@ class Cart extends Component {
                     <input type="checkbox" />
                 </div> */}
                 <div className="cart-img">
-                    <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.ProductID} />
+                    <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.ProductID} />
                 </div>
                 <div className="cart-description">
                     <span>{item.Name}</span>

@@ -104,11 +104,15 @@ sql.connect(config, (err, pool) => {
         
         app.get('/', async (req, res) => {
             try {
-                const result = await new sql.Request().query(`
+                const query = `
                     SELECT * FROM [Order]
-                    WHERE Username = '${req.query.username}'
+                    ${req.query.username ? (`WHERE Username LIKE '${req.query.username}'`) : ''}
                     ORDER BY CreateDate DESC 
-                `);
+                `;
+                console.log("sadss")
+                console.log(query);
+
+                const result = await new sql.Request().query(query);
                 res.status(200).json({
                     success: true,
                     data: {
@@ -117,7 +121,7 @@ sql.connect(config, (err, pool) => {
                     }
                 });
             } catch (err) {
-                res.status(500).json({
+                res.json({
                     success: false,
                     message: err.message
                 });
@@ -157,6 +161,7 @@ sql.connect(config, (err, pool) => {
                 });
             }
         });
+        
         
         app.listen(process.env.PORT || 5003, (err) => {
             if (err) throw err;

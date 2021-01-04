@@ -47,7 +47,7 @@ class NavBar extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/product/best-seller`)
+        axios.get(`http://localhost:5005/best-seller`)
             .then(data => {
                 this.setState({
                     products: data.data.data.recordset
@@ -80,26 +80,12 @@ class NavBar extends Component {
 
     render() {
         const prefix = this.state.products ? this.state.products.map(item => (
-            <a className='search-1' key={item.ProductID} href={`/product/${item.ProductID}`}>
+            <a className='search-1' key={item.ProductID} href={`http://localhost:5005/${item.ProductID}`}>
                 <div className='result-item' key={item.ProductID}>
                     {item.Name.toString().toLowerCase()}
                 </div>
             </a>
         )) : ''
-        // const displayItems = this.props.products ? this.props.products.map(item => (
-        //     <div className="list-item-left">
-        //         <a key={item.ProductID} href={`/product/${item.ProductID}`}>
-        //             <div key={item.ProductID} className="list-item-right">
-        //                 <i className="fas fa-times" area-hidden="true"></i>
-        //                 <img src={`http://localhost:5000/image/products/${item.Image}.jpg`} alt={item.Name} />
-        //                 <div className="content-item-order">
-        //                     <h3>{item.Name}</h3>
-        //                     <p>{item.Price}đ*{item.Quantity}</p>
-        //                 </div>
-        //             </div>
-        //         </a>
-        //     </div>
-        // )) : ''
 
         var username = localStorage.getItem('username')
         let SignIn
@@ -138,9 +124,9 @@ class NavBar extends Component {
                                 Sản phẩm
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href='/menuPizza'>Áo</a>
-                                <a className="dropdown-item" href='/menuBurger'>Quần</a>
-                                <a className="dropdown-item" href='/menuMilktea'>Phụ kiện</a>
+                                <a className="dropdown-item" href='/Shirt'>Áo</a>
+                                <a className="dropdown-item" href='/Pant'>Quần</a>
+                                <a className="dropdown-item" href='/Bag'>Phụ kiện</a>
                             </div>
                         </li>
                         <li className="nav-item">

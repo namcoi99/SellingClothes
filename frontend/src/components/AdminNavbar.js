@@ -16,7 +16,7 @@ class AdminNavbar extends Component {
     //     })
     //     if (event.target.name === 'productSearch') {
     //         if (event.target.value !== '') {
-    //             axios.get(`/product/list?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
+    //             axios.get(`http://localhost:5005/list?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
     //                 .then(data => {
     //                     this.setState({
     //                         products: data.data.data.recordset
@@ -57,14 +57,6 @@ class AdminNavbar extends Component {
     // }
 
     render() {
-        // const prefix = this.state.products ? this.state.products.map(item => (
-        //     <a className='search-1' key={item.ProductID} href={`/product/${item.ProductID}`}>
-        //         <div className='result-item' key={item.ProductID}>
-        //             {item.Name.toString().toLowerCase()}
-        //         </div>
-        //     </a>
-        // )) : ''
-
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="/admin"><i className="fas fa-frog" style={{ fontSize: "2rem" }}></i> <b style={{ fontSize: "1.5rem" }}>STREETWEAR</b></a>
@@ -77,21 +69,11 @@ class AdminNavbar extends Component {
                             <a className="nav-link" href="/admin">Sản phẩm<span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/admin/order-list" >Đơn hàng</a>
+                            <a className="nav-link" href="admin/order-list" >Đơn hàng</a>
                         </li>
-                        {/* <li className="nav-item">
-                            <a className="nav-link" href="/admin/product" >Sản phẩm</a>
-                        </li> */}
                     </ul>
-                    {/* <form className="form-inline my-2 my-lg-0" style={{ position: "relative" }}>
-                        <input className="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm..."
-                            name="productSearch" id="productSearch" onChange={this.handleChange} />
-                        <div className='search-container-1'>{prefix}</div>
-                        <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick={(e) => this.handleSubmit(e)}>Tìm kiếm</button>
-
-                    </form> */}
                     <ul className="navbar-nav ml-2">
-                    <li className="nav-item">
+                        <li className="nav-item">
                             <a className="nav-link" href='/'>Trang người dùng</a>
                         </li>
                         <li className="nav-item">

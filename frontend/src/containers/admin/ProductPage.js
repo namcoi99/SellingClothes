@@ -20,7 +20,7 @@ class ProductPage extends Component {
 
     getData = (pageNumber) => {
         axios
-            .get(`/product?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+            .get(`http://localhost:5005?pageNumber=${pageNumber}&pageSize=${pageSize}`)
             .then(data => {
                 // console.log(data.data.data.recordset);
                 this.setState({
