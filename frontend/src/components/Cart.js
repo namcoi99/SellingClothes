@@ -130,7 +130,7 @@ class Cart extends Component {
                 <div className="cart-quantity">
                     <div className='quantity-sub'>
                         <button type="button" onClick={(event) => this.props.Decrease(item, event)} className="btn btn-dark" ><i className="fas fa-minus" href="/home"></i></button>
-                        <input type="number" name="quantity" min="1" placeholder={item.Quantity} />
+                        <input type="number" name="quantity" min="1" placeholder={item.Quantity} disabled />
                         <button type="button" onClick={(event) => this.props.Increase(item, event)} className="btn btn-light"><i className="fas fa-plus"></i></button>
                     </div>
                 </div>

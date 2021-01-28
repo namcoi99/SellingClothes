@@ -1,20 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import axios from './axios.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import Home from './containers/Home';
-import Product from './components/Product';
-import Menu from './components/Menu';
-import Cart from './components/Cart';
-import OrderList from './components/OrderList';
-import OrderDetail from './components/OrderDetail';
 import './App.scss';
-import OrderListSearch from './components/OrderListSearch.js';
-import ProductPage from './containers/admin/ProductPage.js';
-import AdminNavbar from './components/AdminNavbar.js';
-import Footer from './components/Footer.js';
-import OrderPage from './containers/admin/OrderPage.js';
+
+// import SignIn from './components/SignIn';
+// import SignUp from './components/SignUp';
+// import Home from './containers/Home';
+// import Product from './components/Product';
+// import Menu from './components/Menu';
+// import Cart from './components/Cart';
+// import OrderList from './components/OrderList';
+// import OrderDetail from './components/OrderDetail';
+// import OrderListSearch from './components/OrderListSearch.js';
+// import ProductPage from './containers/admin/ProductPage.js';
+// import AdminNavbar from './components/AdminNavbar.js';
+// import Footer from './components/Footer.js';
+// import OrderPage from './containers/admin/OrderPage.js';
+
+const SignIn = lazy(() => import('./components/SignIn'));
+const SignUp = lazy(() => import('./components/SignUp'));
+const Home = lazy(() => import('./containers/Home'));
+const Product = lazy(() => import('./components/Product'));
+const Menu = lazy(() => import('./components/Menu'));
+const Cart = lazy(() => import('./components/Cart'));
+const OrderList = lazy(() => import('./components/OrderList'));
+const OrderDetail = lazy(() => import('./components/OrderDetail'));
+const OrderListSearch = lazy(() => import('./components/OrderListSearch'));
+const ProductPage = lazy(() => import('./containers/admin/ProductPage'));
+const AdminNavbar = lazy(() => import('./components/AdminNavbar'));
+const Footer = lazy(() => import('./components/Footer'));
+const OrderPage = lazy(() => import('./containers/admin/OrderPage'));
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -53,10 +68,8 @@ class App extends Component {
             username: response.data.username,
             id: response.data.id
           })
-          // console.log(this.state)
           localStorage.setItem('username', response.data.username)
-          // console.log(response.data.username)
-          if(response.data.username == 'admin') {
+          if (response.data.username == 'admin') {
             window.location.href = '/admin';
           } else {
             window.location.href = '/';
@@ -70,7 +83,6 @@ class App extends Component {
   }
 
   _checkAdmin = function () {
-    // console.log(window.localStorage.getItem('username'));
     if (window.localStorage.getItem('username') !== 'admin') {
       alert("You do not have permission to access");
       window.location.href = "/"
@@ -152,12 +164,12 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <React.Suspense fallback={loading()}>
+          <Suspense fallback={loading()}>
             <Switch>
               <Route exact path="/" render={(props) => {
                 return <Home {...props} addtoCart={this._addtoCart} state={this.state} />
               }} />
-              <Route exact path="/admin" checkAdmin={this._checkAdmin} render={(props) => {
+              <Route exact path="/admin" checkAdmin={this._checkAdmin} render={() => {
                 return (
                   <div>
                     <AdminNavbar />
@@ -165,7 +177,7 @@ class App extends Component {
                   </div>
                 )
               }} />
-              <Route exact path="/admin/order-list" checkAdmin={this._checkAdmin} render={(props) => {
+              <Route exact path="/admin/order-list" checkAdmin={this._checkAdmin} render={() => {
                 return (
                   <div>
                     <AdminNavbar />
@@ -204,11 +216,10 @@ class App extends Component {
                 return <OrderListSearch {...props} state={this.state} />
               }} />
             </Switch>
-          </React.Suspense>
+            <Footer/>
+          </Suspense>
         </BrowserRouter>
-        <Footer />
       </div>
-
     );
   }
 }

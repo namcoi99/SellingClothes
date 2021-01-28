@@ -17,7 +17,7 @@ class NavBar extends Component {
         })
         if (event.target.name === 'productSearch') {
             if (event.target.value !== '') {
-                axios.get(`/product?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
+                axios.get(`http://localhost:5005?pageNumber=1&pageSize=4&keyword=${event.target.value}`)
                     .then(data => {
                         this.setState({
                             products: data.data.data.recordset

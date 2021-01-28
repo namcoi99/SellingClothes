@@ -81,7 +81,7 @@ class HomeContent extends Component {
             <div key={item.ProductID} className='trending-item-root'>
                 <div className="trending-item" data-aos="fade-right" data-aos-delay="500">
                     <div className="trending-item-img">
-                        <a href={`http://localhost:5005/${item.ProductID}`} target="__blank">
+                        <a href={`/product/${item.ProductID}`} target="__blank">
                             <img src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.Name}
                                 style={{
                                     backgroundPosition: 'center',
@@ -92,7 +92,7 @@ class HomeContent extends Component {
                         </a>
                     </div>
                     <div className="trending-item-text">
-                        <a href={`http://localhost:5005/${item.ProductID}`} target="__blank">
+                        <a href={`/product/${item.ProductID}`} target="__blank">
                             <h2>{item.Name}</h2>
                         </a>
                     </div>
@@ -113,7 +113,7 @@ class HomeContent extends Component {
         ))
         const Products = this.state.products.map(item => (
             <div key={item.ProductID} className="card" style={{ width: "20rem" }}>
-                <a href={`http://localhost:5005/${item.ProductID}`} target="__blank"><img className="card-img-top" src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.Name} style={{
+                <a href={`/product/${item.ProductID}`} target="__blank"><img className="card-img-top" src={`http://localhost:5005/image/products/${item.Image}.jpg`} alt={item.Name} style={{
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeate',
                     height: '300px',

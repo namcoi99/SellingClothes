@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../Css/header.css';
-import axios from '../axios';
+import axios from 'axios';
 
 class AdminNavbar extends Component {
 
