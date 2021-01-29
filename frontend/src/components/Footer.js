@@ -15,9 +15,9 @@ class Footer extends Component {
                         </div>
                         <div className="top-footer-left-icon">
                             <a href="https://www.facebook.com/tatuan19" target="__blank"><i className="fab fa-facebook"></i></a>
-                            <a href="" target="__blank"><i className="fab fa-youtube"></i></a>
-                            <a href="" target="__blank"><i className="fab fa-instagram"></i></a>
-                            <a href="" target="__blank"><i className="fas fa-envelope-square"></i></a>
+                            <a href="https://youtube.com" target="__blank"><i className="fab fa-youtube"></i></a>
+                            <a href="https://instagram.com" target="__blank"><i className="fab fa-instagram"></i></a>
+                            <a href="https://gmail.com" target="__blank"><i className="fas fa-envelope-square"></i></a>
                         </div>
                     </div>
                     <div className="top-footer-right">

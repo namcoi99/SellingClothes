@@ -3,13 +3,12 @@ const sql = require('mssql');
 const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const multer = require('multer');
 
 const config = {
     user: 'sa',
-    password: '123456',
-    server: 'localhost',
-    database: 'WebCSDL',
+    password: 'Pass@word',
+    server: 'db',
+    database: 'WebCSDL'
 };
 
 sql.connect(config, (err, pool) => {

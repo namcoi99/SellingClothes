@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 
 const config = {
     user: 'sa',
-    password: '123456',
-    server: 'localhost',
-    database: 'WebCSDL',
+    password: 'Pass@word',
+    server: 'db',
+    database: 'WebCSDL'
 };
 
 sql.connect(config, (err, pool) => {

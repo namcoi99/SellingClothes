@@ -1,0 +1,51 @@
+version: "3.9"
+services:
+  admin:
+    build: './Admin'
+    ports:
+      - "5000:5000"
+    depends_on: 
+      - db
+    restart: always
+
+  cart:
+    build: './Cart'
+    ports:
+      - "5001:5001"
+    depends_on: 
+      - db
+    restart: always
+
+  customer:
+    build: './Customer'
+    ports:
+      - "5002:5002"
+    depends_on: 
+      - db
+    restart: always
+
+  order:
+    build: './Order'
+    ports:
+      - "5003:5003"
+    depends_on: 
+      - db
+    restart: always
+
+  product:
+    build: './Product'
+    ports:
+      - "5005:5005"
+    depends_on: 
+      - db
+    restart: always
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"
+    volumes:
+      - ./sql-data:/var/opt/mssql/data

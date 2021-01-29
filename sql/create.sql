@@ -3,7 +3,7 @@ GO
 
 USE WebCSDL
 
-DROP TABLE [Customer]
+--DROP TABLE [Customer]
 CREATE TABLE [Customer]
 (
 	Username varchar(20) UNIQUE NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE [Customer]
 )
 GO
 
-DROP TABLE [Product]
+--DROP TABLE [Product]
 CREATE TABLE [Product]
 (
 	ProductID int IDENTITY(1,1),
@@ -30,7 +30,7 @@ CREATE TABLE [Product]
 )
 GO
 
-DROP TABLE [Order]
+--DROP TABLE [Order]
 CREATE TABLE [Order]
 (
 	OrderID varchar(20),
@@ -42,7 +42,7 @@ CREATE TABLE [Order]
 	FOREIGN KEY (Username) REFERENCES [Customer] (Username)
 )
 
-DROP TABLE [OrderList]
+--DROP TABLE [OrderList]
 CREATE TABLE [OrderList]
 (
 	OrderID varchar(20),
@@ -53,7 +53,7 @@ CREATE TABLE [OrderList]
 	FOREIGN KEY (ProductID) REFERENCES [Product] (ProductID)
 )
 
-DROP TABLE [Cart]
+--DROP TABLE [Cart]
 CREATE TABLE [Cart]
 (
 	Username varchar(20),
@@ -66,7 +66,7 @@ CREATE TABLE [Cart]
 
 -- Trigger
 /* cập nhật hàng trong kho sau khi đặt hàng hoặc cập nhật */
-DROP TRIGGER trg_OrderList
+--DROP TRIGGER trg_OrderList
 CREATE TRIGGER trg_OrderList ON [OrderList] AFTER INSERT AS 
 BEGIN
 	UPDATE [Product]
@@ -80,7 +80,7 @@ END
 GO
 
 /* xóa giỏ hàng sau khi đặt hàng (order/thanh toán) */
-DROP TRIGGER trg_ClearCart
+--	DROP TRIGGER trg_ClearCart
 CREATE TRIGGER trg_ClearCart ON [Order] AFTER INSERT AS 
 BEGIN
 	DELETE FROM [Cart]
@@ -102,7 +102,7 @@ end
 GO*/
 
 /* cập nhật hàng trong kho sau khi hủy đặt hàng */
-DROP TRIGGER trg_CancelOrder
+--DROP TRIGGER trg_CancelOrder
 CREATE TRIGGER trg_CancelOrder ON [OrderList] FOR DELETE AS 
 BEGIN
 	UPDATE Product

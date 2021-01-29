@@ -80,7 +80,7 @@ class NavBar extends Component {
 
     render() {
         const prefix = this.state.products ? this.state.products.map(item => (
-            <a className='search-1' key={item.ProductID} href={`http://localhost:5005/${item.ProductID}`}>
+            <a className='search-1' key={item.ProductID} href={`http://localhost:3000/product/${item.ProductID}`}>
                 <div className='result-item' key={item.ProductID}>
                     {item.Name.toString().toLowerCase()}
                 </div>
