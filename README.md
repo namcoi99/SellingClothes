@@ -5,8 +5,6 @@ You can download SQL Server via the following link: https://www.microsoft.com/en
 
 Downloading and installing Node.js and npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
-Installing nodemon: https://www.npmjs.com/package/nodemon
-
 ## Step 1: Create database
 
 Create new database in your local database system. 
@@ -53,32 +51,32 @@ Each terminal runs 1 microservice
 ### Admin microservice - localhost:5000
 ```bash
 cd backend/Admin
-nodemon admin.js
+node admin.js
 ```
 ### Cart microservice - localhost:5001
 ```bash
 cd backend/Cart
-nodemon cart.js
+node cart.js
 ```
 ### Customer microservice - localhost:5002
 ```bash
 cd backend/Customer
-nodemon customer.js
+node customer.js
 ```
 ### Order microservice - localhost:5003
 ```bash
 cd backend/Order
-nodemon order.js
+node order.js
 ```
 ### Product microservice - localhost:5005
 ```bash
 cd backend/Product
-nodemon product.js
+node product.js
 ```
 ### Upload Image microservice - localhost:5006
 ```bash
 cd backend/UploadImg
-nodemon upload.js
+node upload.js
 ```
 
 ## Step 3: Run frontend
