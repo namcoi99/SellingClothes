@@ -87,4 +87,4 @@ cd frontend
 npm start
 ```
 
-Go to localhost:3000 in your browser
+Go to localhost:3000 in your browser and enjoy!!
