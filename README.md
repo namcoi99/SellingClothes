@@ -38,10 +38,6 @@ cd backend/Product
 npm i
 ```
 ```bash
-cd backend/UploadImg
-npm i
-```
-```bash
 cd frontend
 npm i
 ```
@@ -72,11 +68,6 @@ node order.js
 ```bash
 cd backend/Product
 node product.js
-```
-### Upload Image microservice - localhost:5006
-```bash
-cd backend/UploadImg
-node upload.js
 ```
 
 ## Step 3: Run frontend
